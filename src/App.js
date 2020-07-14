@@ -33,10 +33,14 @@ const App = () => {
 
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
+
+  const [openSignIn, setOpenSignIn] = useState(false);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
+
 
   useEffect(() => {
     db.collection("posts").onSnapshot((snapshot) => {
@@ -50,42 +54,48 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((authUser)=>{
-      if(authUser){
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
         //user has logged in
         console.log(authUser.l);
-        setUser(authUser)
-        if(authUser.displayName){
-          //dont update username 
-        }else{
-          return authUser.updateProfile({
-            displayName: username
-          })
-        }
-        
-      }else{
+        setUser(authUser);
+      } else {
         //user has logged out
-        setUser(null)
+        setUser(null);
       }
-    })
-    return ()=>{
+    });
+    return () => {
       //perfom some cleanup action
-      unsubscribe()
-    }
-    
-  }, [user, username])
+      unsubscribe();
+    };
+  }, [user, username]);
 
   const signUp = (e) => {
-    e.preventDefault()
-    auth.createUserWithEmailAndPassword(email, password).catch(error=> alert(error.message))
+    e.preventDefault();
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        return authUser.user.updateProfile({
+          displayName: username,
+        });
+      })
+      .catch((error) => alert(error.message));
+      setOpen(false)
+  };
 
+  const signIn = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => alert(error.message));
+      setOpenSignIn(false)
   };
 
   return (
     <div className="app">
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <form className='app__signup'>
+          <form className="app__signup">
             <center>
               <img
                 className="app__headerImage"
@@ -93,7 +103,6 @@ const App = () => {
                 alt=""
               />
             </center>
-
             <Input
               placeholder="username"
               type="text"
@@ -112,12 +121,40 @@ const App = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <Button type='submit' onClick={signUp}>Sign Up</Button>
+            <Button type="submit" onClick={signUp}>
+              Sign Up
+            </Button>
           </form>
         </div>
       </Modal>
-      <Button onClick={() => setOpen(true)}>Sign Up</Button>
-
+      <Modal open={openSignIn} onClose={() => setOpenSignIn(false)}>
+        <div style={modalStyle} className={classes.paper}>
+          <form className="app__signup">
+            <center>
+              <img
+                className="app__headerImage"
+                src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
+                alt=""
+              />
+            </center>
+            <Input
+              placeholder="email"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              placeholder="password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button type="submit" onClick={signIn}>
+              Sign In
+            </Button>
+          </form>
+        </div>
+      </Modal>
       <div className="app__header">
         <img
           className="app__headerImage"
@@ -125,6 +162,15 @@ const App = () => {
           alt=""
         />
       </div>
+      {user ? (
+        <Button onClick={() => auth.signOut()}>Logout</Button>
+      ) : (
+        <div className="app__loginContainer">
+          <Button onClick={()=>setOpenSignIn(true)}>Sign In</Button>
+
+          <Button onClick={()=> setOpen(true)}>Sign Up</Button>
+        </div>
+      )}
       <h1>
         Note that the development build is not optimized. To create a production
         build, use npm run build.

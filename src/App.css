@@ -3,6 +3,8 @@
   font-family: sans-serif;
 }
 .app{
+  margin: 0 auto;
+  max-width: 720px;
   background-color: #fafafa;
   height: 100vh;
 }
