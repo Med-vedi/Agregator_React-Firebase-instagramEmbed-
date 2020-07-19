@@ -96,7 +96,7 @@ const App = () => {
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
         // console.log(user.displayName)
-        
+
       ) : (
         <h3>Sorry, you need to login</h3>
       )}
@@ -202,8 +202,6 @@ const App = () => {
         caption="WOW its awesome"
         imageUrl="https://scontent-mxp1-1.cdninstagram.com/v/t51.2885-15/e35/s1080x1080/62012341_450008379089640_176485431659869456_n.jpg?_nc_ht=scontent-mxp1-1.cdninstagram.com&_nc_cat=100&_nc_ohc=s9iBK3-nPtQAX9UXv9o&oh=a3d37d2f20f1b787914ac501687c0c17&oe=5F30E862"
       /> */}
-      <Post />
-      <Post />
     </div>
   );
 };
