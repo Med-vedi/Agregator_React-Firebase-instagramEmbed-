@@ -13,7 +13,7 @@ function Post({ imageUrl, username, caption }) {
         />
         <h3>{username}</h3>
       </div>
-      <div className="post__img-hover-zoom">
+      <div class="post__img-hover-zoom">
         <img className="post__image" src={imageUrl} alt="" />
       </div>
       <h4 className="post__text">

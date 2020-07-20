@@ -56,7 +56,7 @@ function ImageUpload({ username }) {
   };
 
   return (
-    <div className='imageupload'>
+    <div className='imageupload__container'>
       <h1>Share your photo</h1>
       <progress className="imageupload__progress" value={progress} max="100" />
       <input
