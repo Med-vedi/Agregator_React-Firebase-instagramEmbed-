@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 import { storage, db } from "./firebase";
 import firebase from "firebase";
 
-import './ImageUpload.css'
+import "./ImageUpload.css";
 
 function ImageUpload({ username }) {
   const [image, setImage] = useState(null);
@@ -11,14 +11,21 @@ function ImageUpload({ username }) {
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState("");
 
+  //to fix
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const open = Boolean(anchorEl);
+  // const id = open ? "simple-popover" : undefined;
+
   const handleChange = (e) => {
     if (e.target.files[0]) {
       setImage(e.target.files[0]);
     }
   };
+  //TO DO catch empty file
   const handleUpload = () => {
     let uploadTask = storage.ref(`images/${image.name}`).put(image);
 
+    console.log(uploadTask);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -30,7 +37,7 @@ function ImageUpload({ username }) {
       },
       (error) => {
         //error function
-        console.log(error);
+        console.log("error");
         alert(error.message);
       },
       () => {
@@ -50,13 +57,15 @@ function ImageUpload({ username }) {
             setProgress(0);
             setCaption("");
             setImage(null);
+            //to fix
+            // setAnchorEl(null);
           });
       }
     );
   };
 
   return (
-    <div className='imageupload__container'>
+    <div className="imageupload__container">
       <h1>Share your photo</h1>
       <progress className="imageupload__progress" value={progress} max="100" />
       <input

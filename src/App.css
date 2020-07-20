@@ -6,7 +6,9 @@
   margin: 0 auto;
   max-width: 720px;
   background-color: #fafafa;
-  height: 100vh;
+  /* background-color: #000; */
+
+  /* height: 100vh; */
 }
 /* .app__header{
   background-color: white;
@@ -21,4 +23,6 @@
 
 .app__postcard__container{
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

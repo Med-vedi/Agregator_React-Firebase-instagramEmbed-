@@ -12,7 +12,7 @@ const Header = (props) => {
 
   return (
     <div className="header__container">
-      <HeaderMenu />
+      <HeaderMenu/>
       <div className='header__logo'> 
         <h1>Header</h1> 
       </div>

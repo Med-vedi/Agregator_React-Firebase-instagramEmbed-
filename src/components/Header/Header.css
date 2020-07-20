@@ -11,3 +11,13 @@
     margin: 0 auto;
 
 }
+
+.tabs__tab__text{
+  color: white;
+  display: none;
+}
+
+.tabpanel__tab__text{
+ background-color: black;
+ color: white;
+}

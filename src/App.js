@@ -8,11 +8,13 @@ import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
 
+import VideoUpload from './components/Footer/Upload/VideoUpload'
+
 // import Plug from "./components/Plug/Plug";
 import Header from "./components/Header/Header";
-import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import TabsModal from "./components/Header/Tabs";
 import PostCard from "./components/Card/PostCard";
+import Footer from "./components/Footer/Footer";
 
 function getModalStyle() {
   const top = 50;
@@ -169,8 +171,8 @@ const App = () => {
       <Header user={user} />
       {user ? (
         console.log(user)
-        // <PauseCircleOutlineIcon color="error" onClick={() => auth.signOut()} />
       ) : (
+        // <PauseCircleOutlineIcon color="error" onClick={() => auth.signOut()} />
         <div className="app__loginContainer">
           <Button variant="outlined" onClick={() => setOpenSignIn(true)}>
             Sign In
@@ -201,10 +203,14 @@ const App = () => {
         <PostCard />
         <PostCard />
         <PostCard />
-        
+        <PostCard />
+        <PostCard />
+        <PostCard />
       </div>
       {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
+        // <ImageUpload username={user.displayName} />
+        <Footer username={user.displayName}/>
+
       ) : (
         // console.log(user.displayName)
 
