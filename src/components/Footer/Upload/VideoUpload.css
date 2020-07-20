@@ -1,4 +1,4 @@
-.imageupload__container {
+.videoupload__container {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -6,6 +6,6 @@
     margin: 10px auto;
 
 }
-.imageupload__progress{
+.videoupload__progress{
     margin: 5px auto;    
 }

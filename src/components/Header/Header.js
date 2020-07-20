@@ -8,7 +8,6 @@ import { auth } from "../../firebase";
 
 const Header = (props) => {
     const user = props.user
-    console.log(user);
 
   return (
     <div className="header__container">

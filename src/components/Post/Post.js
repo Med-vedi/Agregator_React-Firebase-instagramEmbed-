@@ -2,7 +2,7 @@ import React from "react";
 import { Avatar } from "@material-ui/core";
 import "./Post.css";
 
-function Post({ imageUrl, username, caption }) {
+function Post({ videoUrl, imageUrl, username, caption }) {
   return (
     <div className="post">
       <div className="post__header">
@@ -13,8 +13,10 @@ function Post({ imageUrl, username, caption }) {
         />
         <h3>{username}</h3>
       </div>
-      <div class="post__img-hover-zoom">
-        <img className="post__image" src={imageUrl} alt="" />
+      <div className="post__img-hover-zoom">
+        {/* <img className="post__image" src={imageUrl} alt="" /> */}
+        <video className="post__image" src={videoUrl} alt="" onClick={e => e.target.play()}/>
+
       </div>
       <h4 className="post__text">
         <strong>{username}</strong>: {caption}

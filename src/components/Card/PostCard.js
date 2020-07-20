@@ -6,7 +6,7 @@ import { Button } from "@material-ui/core";
 const PostCard = () => {
   return (
     <div className="postcard__card">
-      <div class="postcard__img-hover-zoom">
+      <div className="postcard__img-hover-zoom">
         <img className="postcard__img" src={img} alt="" />
       </div>
       {/* <h1>Tailored Jeans</h1> */}

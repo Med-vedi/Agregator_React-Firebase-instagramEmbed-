@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Post from "./components/Post/Post";
+// import Post from "./components/Post/Post";
 
 import { db, auth } from "./firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
-import ImageUpload from "./ImageUpload";
+// import ImageUpload from "./ImageUpload";
 
-import VideoUpload from './components/Footer/Upload/VideoUpload'
+// import VideoUpload from './components/Footer/Upload/VideoUpload'
 
 // import Plug from "./components/Plug/Plug";
 import Header from "./components/Header/Header";
@@ -41,7 +41,10 @@ const App = () => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
 
-  const [posts, setPosts] = useState([]);
+  // const [cards, setCards] = useState([]);
+
+
+  // const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
 
   const [openSignIn, setOpenSignIn] = useState(false);
@@ -51,19 +54,33 @@ const App = () => {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    //controll and sort
-    db.collection("posts")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) => {
-        setPosts(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            post: doc.data(),
-          }))
-        );
-      });
-  }, []);
+  // useEffect(() => {
+  //   //controll and sort
+  //   db.collection("posts")
+  //     .orderBy("timestamp", "desc")
+  //     .onSnapshot((snapshot) => {
+  //       setPosts(
+  //         snapshot.docs.map((doc) => ({
+  //           id: doc.id,
+  //           post: doc.data(),
+  //         }))
+  //       );
+  //     });
+  // }, []);
+
+  // useEffect(() => {
+  //   //controll and sort
+  //   db.collection("cards")
+  //     .orderBy("timestamp", "desc")
+  //     .onSnapshot((snapshot) => {
+  //       setCards(
+  //         snapshot.docs.map((doc) => ({
+  //           id: doc.id,
+  //           card: doc.data(),
+  //         }))
+  //       );
+  //     });
+  // }, []);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -172,7 +189,6 @@ const App = () => {
       {user ? (
         console.log(user)
       ) : (
-        // <PauseCircleOutlineIcon color="error" onClick={() => auth.signOut()} />
         <div className="app__loginContainer">
           <Button variant="outlined" onClick={() => setOpenSignIn(true)}>
             Sign In
@@ -191,14 +207,24 @@ const App = () => {
       <TabsModal />
       {/* <Plug /> */}
 
-      {posts.map(({ id, post }) => (
+      {/* {posts.map(({ id, post }) => (
         <Post
           key={id}
           username={post.username}
           caption={post.caption}
           imageUrl={post.imageUrl}
         />
-      ))}
+      ))} */}
+
+       {/* {cards.map(({ id, card }) => (
+        <Post
+          key={id}
+          username={card.username}
+          caption={card.caption}
+          videoUrl={card.videoUrl}
+        />
+      ))} */}
+
       <div className="app__postcard__container">
         <PostCard />
         <PostCard />
@@ -212,8 +238,6 @@ const App = () => {
         <Footer username={user.displayName}/>
 
       ) : (
-        // console.log(user.displayName)
-
         <h3>Sorry, you need to login</h3>
       )}
     </div>

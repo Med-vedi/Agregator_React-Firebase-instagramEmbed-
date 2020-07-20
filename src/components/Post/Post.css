@@ -16,12 +16,15 @@
 .post__text {
     font-weight: normal;
     padding: 20px;
+    color: #000000;
 }
 
 .post__header {
     display: flex;
     align-items: center;
     padding: 20px;
+    color: #000000;
+
 }
 
 .post__avatar {

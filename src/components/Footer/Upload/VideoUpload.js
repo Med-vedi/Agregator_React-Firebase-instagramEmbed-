@@ -1,67 +1,83 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Modal from '@material-ui/core/Modal';
+import React, { useState } from "react";
+import { Button } from "@material-ui/core";
+import { storage, db } from "../../../firebase";
+import firebase from "firebase";
 
+import "./VideoUpload.css";
 
-function getModalStyle() {
-  const top = 50;
-  const left = 50;
+function VideoUpload({ username }) {
+  const [video, setVideo] = useState(null);
+  //   const [url, setUrl] = useState("");
+  const [progress, setProgress] = useState(0);
+  const [caption, setCaption] = useState("");
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
+  //to fix
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const open = Boolean(anchorEl);
+  // const id = open ? "simple-popover" : undefined;
+
+  const handleChange = (e) => {
+    if (e.target.files[0]) {
+      setVideo(e.target.files[0]);
+    }
   };
-}
+  //TO DO catch empty file
+  const handleUpload = () => {
+    let uploadTask = storage.ref(`videos/${video.name}`).put(video);
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: 'absolute',
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
-
-export default function SimpleModal() {
-  const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = React.useState(getModalStyle);
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
+    console.log(uploadTask);
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        //progress function
+        const progress = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        setProgress(progress);
+      },
+      (error) => {
+        //error function
+        console.log("error");
+        alert(error.message);
+      },
+      () => {
+        //complete function
+        storage
+          .ref("videos")
+          .child(video.name)
+          .getDownloadURL()
+          .then((url) => {
+            //post an video in  db
+            db.collection("cards").add({
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              caption: caption,
+              videoUrl: url,
+              username: username,
+            });
+            setProgress(0);
+            setCaption("");
+            setVideo(null);
+            //to fix
+            // setAnchorEl(null);
+          });
+      }
+    );
   };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const body = (
-    <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Text in a modal</h2>
-      <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-      </p>
-      <SimpleModal />
-    </div>
-  );
 
   return (
-    <div>
-      <button type="button" onClick={handleOpen}>
-        Open Modal
-      </button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-      >
-        {body}
-      </Modal>
+    <div className="videoupload__container">
+      <h1>Share your Video</h1>
+      <progress className="videoupload__progress" value={progress} max="100" />
+      <input
+        type="text"
+        placeholder="Enter a caption"
+        onChange={(e) => setCaption(e.target.value)}
+        value={caption}
+      />
+      <input type="file" onChange={handleChange} />
+      <Button onClick={handleUpload}>Upload</Button>
     </div>
   );
 }
+
+export default VideoUpload;
