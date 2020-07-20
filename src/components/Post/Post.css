@@ -30,9 +30,7 @@
 
 .post__img-hover-zoom {
     height: 300px;
-    /* [1.1] Set it as per your need */
     overflow: hidden;
-    /* [1.2] Hide the overflowing of child elements */
 }
 
 .post__img-hover-zoom img {
@@ -40,5 +38,5 @@
 }
 
 .post__img-hover-zoom:hover img {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }

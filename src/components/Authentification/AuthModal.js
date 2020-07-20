@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
-import Post from "./components/Post/Post";
 
-import { db, auth } from "./firebase";
+import { db, auth } from "../../firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import { Button, Input } from "@material-ui/core";
-import ImageUpload from "./ImageUpload";
 
-import Plug from "./components/Plug";
-import Header from "./components/Header/Header";
-import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
-import TabsModal from "./components/Header/Tabs";
+import { Button, Input } from "@material-ui/core";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 function getModalStyle() {
   const top = 50;
@@ -34,11 +28,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const App = () => {
+const AuthModal = () => {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
 
-  const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
 
   const [openSignIn, setOpenSignIn] = useState(false);
@@ -48,19 +41,6 @@ const App = () => {
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    //controll and sort
-    db.collection("posts")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) => {
-        setPosts(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            post: doc.data(),
-          }))
-        );
-      });
-  }, []);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -99,9 +79,8 @@ const App = () => {
       .catch((error) => alert(error.message));
     setOpenSignIn(false);
   };
-
   return (
-    <div className="app">
+    <div>
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
@@ -164,46 +143,18 @@ const App = () => {
           </form>
         </div>
       </Modal>
-
-      <Header user={user} />
       {user ? (
-        <PauseCircleOutlineIcon color="error" onClick={() => auth.signOut()} />
+        <ExitToAppIcon color="primary" onClick={() => auth.signOut()} />
       ) : (
+        // <Button onClick={() => auth.signOut()}>Logout</Button>
         <div className="app__loginContainer">
-          <Button variant="outlined" onClick={() => setOpenSignIn(true)}>
-            Sign In
-          </Button>
+          <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
 
-          <Button variant="outlined" onClick={() => setOpen(true)}>
-            Sign Up
-          </Button>
+          <Button onClick={() => setOpen(true)}>Sign Up</Button>
         </div>
-      )}
-
-      <h1>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis,
-        nihil ipsum? Asperiores, laudantium esse quo aperiam atque accusamus
-      </h1>
-      <TabsModal />
-      {/* <Plug /> */}
-
-      {posts.map(({ id, post }) => (
-        <Post
-          key={id}
-          username={post.username}
-          caption={post.caption}
-          imageUrl={post.imageUrl}
-        />
-      ))}
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ) : (
-        // console.log(user.displayName)
-
-        <h3>Sorry, you need to login</h3>
       )}
     </div>
   );
 };
 
-export default App;
+export default AuthModal;
