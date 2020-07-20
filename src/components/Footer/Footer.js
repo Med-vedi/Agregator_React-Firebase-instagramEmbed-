@@ -1,7 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Popover from "@material-ui/core/Popover";
-import Fab from "@material-ui/core/Fab";
+import { makeStyles, Popover, Fab } from "@material-ui/core";
 
 import VideoUpload from "./Upload/VideoUpload";
 import AddIcon from "@material-ui/icons/Add";
