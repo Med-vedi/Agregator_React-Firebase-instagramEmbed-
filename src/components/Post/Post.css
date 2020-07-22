@@ -1,6 +1,6 @@
 .post {
     background-color: white;
-    max-width: 500px;
+    width: 90%;
     border: 1px solid lightgrey;
     margin-bottom: 45px;
 }
@@ -32,7 +32,7 @@
 }
 
 .post__img-hover-zoom {
-    height: 300px;
+    height: 50%;
     overflow: hidden;
 }
 

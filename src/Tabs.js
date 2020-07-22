@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../firebase";
+import { db } from "./firebase";
 
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
@@ -12,8 +12,8 @@ import {
   useTheme,
 } from "@material-ui/core";
 
-import "./Header.css";
-import Post from "../Post/Post";
+import "./App.css";
+import Post from "./components/Post/Post";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -102,13 +102,14 @@ export default function TabsModal() {
           <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
+      <div className="tabs__container">
+
       <SwipeableViews
         axis={theme.direction === "rtl" ? "x-reverse" : "x"}
         index={value}
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel
-          className="tabpanel__tab__text"
           value={value}
           index={0}
           dir={theme.direction}
@@ -119,6 +120,7 @@ export default function TabsModal() {
               username={card.username}
               caption={card.caption}
               videoUrl={card.videoUrl}
+              className='tabs__post'
             />
           ))}
           Coming soon (swipe panel)
@@ -142,6 +144,8 @@ export default function TabsModal() {
           Coming soon
         </TabPanel>
       </SwipeableViews>
+      </div>
+
     </div>
   );
 }

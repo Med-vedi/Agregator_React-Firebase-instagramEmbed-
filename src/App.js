@@ -7,41 +7,41 @@ import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
 
 import Header from "./components/Header/Header";
-import TabsModal from "./components/Header/Tabs";
+import TabsModal from "./Tabs";
 import PostCard from "./components/Card/PostCard";
 import Footer from "./components/Footer/Footer";
 
-function getModalStyle() {
-  const top = 50;
-  const left = 50;
+// function getModalStyle() {
+//   const top = 50;
+//   const left = 50;
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
+//   return {
+//     top: `${top}%`,
+//     left: `${left}%`,
+//     transform: `translate(-${top}%, -${left}%)`,
+//   };
+// }
+// const useStyles = makeStyles((theme) => ({
+//   paper: {
+//     position: "absolute",
+//     width: 400,
+//     backgroundColor: theme.palette.background.paper,
+//     border: "2px solid #000",
+//     boxShadow: theme.shadows[5],
+//     padding: theme.spacing(2, 4, 3),
+//   },
+// }));
 
 const App = () => {
-  const classes = useStyles();
-  const [modalStyle] = useState(getModalStyle);
-  const [open, setOpen] = useState(false);
+  // const classes = useStyles();
+  // const [modalStyle] = useState(getModalStyle);
+  // const [open, setOpen] = useState(false);
 
-  const [openSignIn, setOpenSignIn] = useState(false);
+  // const [openSignIn, setOpenSignIn] = useState(false);
 
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -60,30 +60,30 @@ const App = () => {
     };
   }, [user, username]);
 
-  const signUp = (e) => {
-    e.preventDefault();
-    auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((authUser) => {
-        return authUser.user.updateProfile({
-          displayName: username,
-        });
-      })
-      .catch((error) => alert(error.message));
-    setOpen(false);
-  };
+  // const signUp = (e) => {
+  //   e.preventDefault();
+  //   auth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then((authUser) => {
+  //       return authUser.user.updateProfile({
+  //         displayName: username,
+  //       });
+  //     })
+  //     .catch((error) => alert(error.message));
+  //   setOpen(false);
+  // };
 
-  const signIn = (e) => {
-    e.preventDefault();
-    auth
-      .signInWithEmailAndPassword(email, password)
-      .catch((error) => alert(error.message));
-    setOpenSignIn(false);
-  };
+  // const signIn = (e) => {
+  //   e.preventDefault();
+  //   auth
+  //     .signInWithEmailAndPassword(email, password)
+  //     .catch((error) => alert(error.message));
+  //   setOpenSignIn(false);
+  // };
 
   return (
     <div className="app">
-      <Modal open={open} onClose={() => setOpen(false)}>
+      {/* <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
             <center>
@@ -144,10 +144,10 @@ const App = () => {
             </Button>
           </form>
         </div>
-      </Modal>
+      </Modal> */}
 
-      <Header user={user} />
-      {user ? (
+      <Header user={user}></Header>
+      {/* {user ? (
         console.log(user)
       ) : (
         <div className="app__loginContainer">
@@ -159,14 +159,14 @@ const App = () => {
             Sign Up
           </Button>
         </div>
-      )}
+      )} */}
 
       <h1>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis,
         nihil ipsum? Asperiores, laudantium esse quo aperiam atque accusamus
       </h1>
       <TabsModal />
-      
+
       <div className="app__postcard__container">
         <PostCard />
         <PostCard />

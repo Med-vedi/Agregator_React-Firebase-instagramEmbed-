@@ -26,3 +26,19 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+.tabs__container{
+  display: flex;
+  /* flex-direction: row; */
+  background-color: black;
+  color: white;
+ }
+
+.tabs__tab__text{
+  color: white;
+  display: none;
+}
+
+/* .tabs__post{
+  max-width: 33%;
+} */
+
