@@ -81,6 +81,8 @@ const HeaderMenu = () => {
 
   return (
     <div>
+      {/* TO DO:
+      refactore modals and move'em out to Auth folder */}
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">

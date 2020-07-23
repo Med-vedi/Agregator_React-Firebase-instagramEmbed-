@@ -14,6 +14,7 @@ import {
 
 import "./App.css";
 import Post from "./components/Post/Post";
+import InstagramEmbed from "react-instagram-embed";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -26,11 +27,7 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box p={3}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
 }
@@ -55,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TabsModal() {
+export default function TabsModal({ user }) {
   const [cards, setCards] = useState([]);
 
   const classes = useStyles();
@@ -97,55 +94,125 @@ export default function TabsModal() {
           variant="fullWidth"
           //   aria-label="full width tabs example"
         >
-          <Tab label="Video" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
+          <Tab label="VideoCards" {...a11yProps(0)} />
+          <Tab label="InstaCards" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <div className="tabs__container">
+        <SwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={value}
+          onChangeIndex={handleChangeIndex}
+        >
+          <TabPanel value={value} index={0} dir={theme.direction}>
+            <div className="tabs__posts_container">
+              <div className="tabs__posts">
+                {cards.map(({ id, card }) => (
+                  <Post
+                    key={id}
+                    postId={id}
+                    user={user}
+                    username={card.username}
+                    caption={card.caption}
+                    videoUrl={card.videoUrl}
+                    className="tabs__post"
+                  />
+                ))}
+              </div>
 
-      <SwipeableViews
-        axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel
-          value={value}
-          index={0}
-          dir={theme.direction}
-        >
-          {cards.map(({ id, card }) => (
-            <Post
-              key={id}
-              username={card.username}
-              caption={card.caption}
-              videoUrl={card.videoUrl}
-              className='tabs__post'
-            />
-          ))}
-          Coming soon (swipe panel)
-        </TabPanel>
-        <TabPanel
-          className="tabpanel__tab__text"
-          value={value}
-          index={1}
-          dir={theme.direction}
-        >
-          {/* <Plug /> */}
-          Coming soon
-        </TabPanel>
-        <TabPanel
-          className="tabpanel__tab__text"
-          value={value}
-          index={2}
-          dir={theme.direction}
-        >
-          {/* <Plug /> */}
-          Coming soon
-        </TabPanel>
-      </SwipeableViews>
+              {/* <div className="tabs__post__instagram_embded">
+                <InstagramEmbed
+                  url="https://www.instagram.com/p/BzNTYj4o8dp/"
+                  maxWidth={320}
+                  hideCaption={true}
+                  containerTagName="div"
+                  protocol=""
+                  injectScript
+                  onLoading={() => {}}
+                  onSuccess={() => {}}
+                  onAfterRender={() => {}}
+                  onFailure={() => {}}
+                />
+              </div> */}
+            </div>
+          </TabPanel>
+          <TabPanel
+            className="tabpanel__tab__text"
+            value={value}
+            index={1}
+            dir={theme.direction}
+          >
+            <div className="tabs__posts_container">
+              <div className="tabs__post__instagram_embded">
+                <InstagramEmbed
+                  url="https://www.instagram.com/p/CClQQy2lj23/"
+                  maxWidth={320}
+                  hideCaption={true}
+                  containerTagName="div"
+                  protocol=""
+                  injectScript
+                  onLoading={() => {}}
+                  onSuccess={() => {}}
+                  onAfterRender={() => {}}
+                  onFailure={() => {}}
+                />
+              </div>
+              <div className="tabs__post__instagram_embded">
+                <InstagramEmbed
+                  url="https://www.instagram.com/p/CCaoZ1EDHil/"
+                  maxWidth={320}
+                  hideCaption={true}
+                  containerTagName="div"
+                  protocol=""
+                  injectScript
+                  onLoading={() => {}}
+                  onSuccess={() => {}}
+                  onAfterRender={() => {}}
+                  onFailure={() => {}}
+                />
+              </div>
+              <div className="tabs__post__instagram_embded">
+                <InstagramEmbed
+                  url="https://www.instagram.com/p/CC6nDTTBvPW/"
+                  maxWidth={320}
+                  hideCaption={true}
+                  containerTagName="div"
+                  protocol=""
+                  injectScript
+                  onLoading={() => {}}
+                  onSuccess={() => {}}
+                  onAfterRender={() => {}}
+                  onFailure={() => {}}
+                />
+              </div>
+              <div className="tabs__post__instagram_embded">
+                <InstagramEmbed
+                  url="https://www.instagram.com/p/CCRFTPapJrH/"
+                  maxWidth={320}
+                  hideCaption={true}
+                  containerTagName="div"
+                  protocol=""
+                  injectScript
+                  onLoading={() => {}}
+                  onSuccess={() => {}}
+                  onAfterRender={() => {}}
+                  onFailure={() => {}}
+                />
+              </div>
+            </div>
+          </TabPanel>
+          <TabPanel
+            className="tabpanel__tab__text"
+            value={value}
+            index={2}
+            dir={theme.direction}
+          >
+            {/* <Plug /> */}
+            Coming soon
+          </TabPanel>
+        </SwipeableViews>
       </div>
-
     </div>
   );
 }

@@ -1,39 +1,58 @@
-*{
+* {
   margin: 0;
   font-family: sans-serif;
 }
-.app{
-  margin: 0 auto;
-  max-width: 720px;
-  background-color: #fafafa;
-  /* background-color: #000; */
 
-  /* height: 100vh; */
+.app {
+  margin: 0 auto;
+  max-width: 960px;
+  background-color: #fafafa;
+
 }
-/* .app__header{
-  background-color: white;
-  padding: 20px;
-  border-bottom: 1px solid lightgray;
-  object-fit: contain;
-} */
-.app__signup{
+
+.app__header {
+  position: sticky;
+  z-index: 1;
+  top: 0
+}
+
+.app__signup {
   display: flex;
   flex-direction: column;
 }
 
-.app__postcard__container{
+.app__postcard__container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.tabs__container{
-  display: flex;
-  /* flex-direction: row; */
-  background-color: black;
-  color: white;
- }
 
-.tabs__tab__text{
+
+.tabs__container {
+  max-width: 960px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* background-color: black; */
+  /* color: white; */
+}
+
+.tabs__posts_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+}
+
+.tabs__posts {}
+
+.tabs__post__instagram_embded {
+  max-width: 340px;
+  margin-left: 10px;
+
+}
+
+
+.tabs__tab__text {
   color: white;
   display: none;
 }
@@ -41,4 +60,8 @@
 /* .tabs__post{
   max-width: 33%;
 } */
-
+@media only screen and (max-width: 600px) {
+  .tabs__post__instagram_embded {
+    /* display: none; */
+  }
+}

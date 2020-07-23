@@ -16,6 +16,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.1.1",
     "react-dom": "^16.13.1",
+    "react-instagram-embed": "^1.5.0",
     "react-scripts": "3.4.1",
     "react-swipeable-views": "^0.13.9",
     "reactstrap": "^8.5.1"

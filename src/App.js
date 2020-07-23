@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+// import InstagramEmbed from "react-instagram-embed";
+
 import "./App.css";
 
 import { auth } from "./firebase";
@@ -30,12 +32,26 @@ const App = () => {
 
   return (
     <div className="app">
-      <Header user={user}></Header>
+      <div className="app__header">
+        <Header user={user}></Header>
+      </div>
       <h1>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis,
         nihil ipsum? Asperiores, laudantium esse quo aperiam atque accusamus
       </h1>
-      <TabsModal />
+      <TabsModal user={user} />
+      {/* <InstagramEmbed
+        url="https://instagr.am/p/Zw9o4/"
+        maxWidth={320}
+        hideCaption={false}
+        containerTagName="div"
+        protocol=""
+        injectScript
+        onLoading={() => {}}
+        onSuccess={() => {}}
+        onAfterRender={() => {}}
+        onFailure={() => {}}
+      /> */}
       <div className="app__postcard__container">
         {/* hardcoded for the moment */}
         <PostCard />

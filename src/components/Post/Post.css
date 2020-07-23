@@ -1,8 +1,9 @@
 .post {
     background-color: white;
-    width: 90%;
+    /* width: 90%; */
     border: 1px solid lightgrey;
     margin-bottom: 45px;
+    /* padding: 20px; */
 }
 
 .post__image {
@@ -42,4 +43,30 @@
 
 .post__img-hover-zoom:hover img {
     transform: scale(1.1);
+}
+
+.post__commentBox {
+    display: flex;
+    margin-top: 10px;
+    border-top: 1px solid lightgray;
+}
+.post__comments_comment{
+    margin: 5px 20px;
+    font-size: small;
+}
+.post__input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+}
+
+.post__button {
+    flex: 0,5;
+    border: none;
+    background-color: transparent;
+    color: lightskyblue;
+}
+
+.post__danger{
+    color: red;
 }
