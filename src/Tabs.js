@@ -120,7 +120,6 @@ export default function TabsModal({ user }) {
                 {/* VideoVersion */}
 
                 {/* {cards.map(({ id, card }) => (
-
                   <Post
                     key={id}
                     postId={id}
