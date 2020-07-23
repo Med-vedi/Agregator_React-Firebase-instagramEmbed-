@@ -43,8 +43,6 @@
 
 }
 
-.tabs__posts {}
-
 .tabs__post__instagram_embded {
   max-width: 340px;
   margin-left: 10px;
@@ -60,8 +58,6 @@
 /* .tabs__post{
   max-width: 33%;
 } */
-@media only screen and (max-width: 600px) {
-  .tabs__post__instagram_embded {
-    /* display: none; */
-  }
-}
+/* @media only screen and (max-width: 600px) {
+
+} */
