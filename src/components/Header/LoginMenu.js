@@ -87,11 +87,12 @@ const HeaderMenu = () => {
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
             <center>
-              <img
+              <h1 className="app__headerImage">Welcome</h1>
+              {/* <img
                 className="app__headerImage"
                 src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
                 alt=""
-              />
+              /> */}
             </center>
             <Input
               placeholder="username"
@@ -121,11 +122,13 @@ const HeaderMenu = () => {
         <div style={modalStyle} className={classes.paper}>
           <form className="app__signup">
             <center>
-              <img
+            <h1 className="app__headerImage">Welcome Back</h1>
+
+              {/* <img
                 className="app__headerImage"
                 src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
                 alt=""
-              />
+              /> */}
             </center>
             <Input
               placeholder="email"
