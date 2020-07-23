@@ -3,6 +3,7 @@ import { makeStyles, Popover, Fab } from "@material-ui/core";
 
 import VideoUpload from "./Upload/VideoUpload";
 import AddIcon from "@material-ui/icons/Add";
+import ImageUpload from "../../ImageUpload";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
@@ -58,7 +59,8 @@ export default function Footer(props) {
           horizontal: "center",
         }}
       >
-        <VideoUpload username={props.username} />
+        {/* <VideoUpload username={props.username} /> */}
+        <ImageUpload username={props.username}/>
       </Popover>
     </div>
   );
