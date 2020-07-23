@@ -53,20 +53,29 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function TabsModal({ user }) {
-  const [cards, setCards] = useState([]);
+              
+  // const [cards, setCards] = useState([]); // VideoVersion
+
+  const [posts, setPosts] = useState([]);
 
   const classes = useStyles();
   const theme = useTheme();
 
   useEffect(() => {
     //controll and sort
-    db.collection("cards")
+
+    // db.collection("cards") // VideoVersion
+    db.collection("posts")
+
       .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
-        setCards(
+        // setCards( // VideoVersion
+        setPosts(
           snapshot.docs.map((doc) => ({
             id: doc.id,
-            card: doc.data(),
+            // card: doc.data(), // VideoVersion
+
+            post: doc.data(),
           }))
         );
       });
@@ -108,7 +117,10 @@ export default function TabsModal({ user }) {
           <TabPanel value={value} index={0} dir={theme.direction}>
             <div className="tabs__posts_container">
               <div className="tabs__posts">
-                {cards.map(({ id, card }) => (
+                {/* VideoVersion */}
+
+                {/* {cards.map(({ id, card }) => (
+
                   <Post
                     key={id}
                     postId={id}
@@ -118,23 +130,19 @@ export default function TabsModal({ user }) {
                     videoUrl={card.videoUrl}
                     className="tabs__post"
                   />
+                ))} */}
+                {posts.map(({ id, post }) => (
+                  <Post
+                    key={id}
+                    postId={id}
+                    user={user}
+                    username={post.username}
+                    caption={post.caption}
+                    imageUrl={post.imageUrl}
+                    className="tabs__post"
+                  />
                 ))}
               </div>
-
-              {/* <div className="tabs__post__instagram_embded">
-                <InstagramEmbed
-                  url="https://www.instagram.com/p/BzNTYj4o8dp/"
-                  maxWidth={320}
-                  hideCaption={true}
-                  containerTagName="div"
-                  protocol=""
-                  injectScript
-                  onLoading={() => {}}
-                  onSuccess={() => {}}
-                  onAfterRender={() => {}}
-                  onFailure={() => {}}
-                />
-              </div> */}
             </div>
           </TabPanel>
           <TabPanel

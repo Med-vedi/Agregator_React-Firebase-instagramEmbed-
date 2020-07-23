@@ -12,7 +12,9 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
     let unsubscribe;
     if (postId) {
       unsubscribe = db
-        .collection("cards")
+        // .collection("cards") // VideoVersion
+        .collection("posts") // VideoVersion
+
         .doc(postId)
         .collection("comments")
         .orderBy("timestamp", "desc")
@@ -27,7 +29,8 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
 
   const postComment = (e) => {
     e.preventDefault();
-    db.collection("cards").doc(postId).collection("comments").add({
+    // db.collection("cards").doc(postId).collection("comments").add({// VideoVersion
+    db.collection("posts").doc(postId).collection("comments").add({
       text: comment,
       username: user.displayName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -45,13 +48,15 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
         <h3>{username}</h3>
       </div>
       <div className="post__img-hover-zoom">
-        {/* <img className="post__image" src={imageUrl} alt="" /> */}
-        <video
+        <img className="post__image" src={imageUrl} alt="" />
+ 
+        { /* <video // VideoVersion
+
           className="post__image"
           src={videoUrl}
           alt=""
           onClick={(e) => e.target.play()}
-        />
+        /> */}
       </div>
       <h4 className="post__text">
         <strong>{username}</strong>: {caption}
