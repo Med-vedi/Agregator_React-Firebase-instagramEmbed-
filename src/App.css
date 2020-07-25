@@ -3,16 +3,34 @@
   font-family: sans-serif;
 }
 
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  color: #000;
+  margin: 0;
+  padding: 0;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: #fff;
+  text-align: center;
+}
+
 .app {
   margin: 0 auto;
   max-width: 960px;
-  background-color: #fafafa;
-
+  /* background-color: #fafafa; */
 }
 
 .app__header {
+  color: #000;
   position: sticky;
-  z-index: 1;
+  z-index: 3;
   top: 0
 }
 
@@ -20,6 +38,65 @@
   display: flex;
   flex-direction: column;
 }
+
+
+
+.app__intro {
+  color:#fff;
+  background-color: rgba(0,0,0,.2);
+
+  box-sizing: border-box;
+  min-height: 50vh;
+  padding: 30vw 0 5vw;
+  position: relative;
+  transform-style: inherit;
+  width: 100%;
+}
+
+.app__intro,
+.app__intro:before {
+  background: 50% 50% / cover;
+}
+
+.app__intro::before {
+  color:#000;
+  position: absolute;
+  bottom: 0;
+  content: "Try It";
+  left: 0;
+  right: 0;
+  top: 0;
+  display: block;
+  background-image: url('./img/874.jpg');
+  background-size: cover;
+  transform-origin: center center 0;
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+  height: 70vh
+}
+/* 
+.app__intro * {
+  font-weight: normal;
+  letter-spacing: 0.2em;
+  text-align: center;
+  margin: 0;
+  padding: 1em 0;
+} */
+
+.app__intro p {
+  background-color: rgba(0,0,0,.2)
+}
+
+.app__main {
+  margin: 200px auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  padding: 100px 0
+}
+
+
 
 .app__postcard__container {
   display: flex;
@@ -56,6 +133,7 @@
   color: white;
   display: none;
 }
+
 /* /TO DO:
 style instaCards */
 
@@ -64,8 +142,6 @@ style instaCards */
 } */
 
 @media only screen and (max-width: 600px) {
-  .tabs__container {
-
-  }
+  .tabs__container {}
 
 }

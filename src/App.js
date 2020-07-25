@@ -35,38 +35,32 @@ const App = () => {
       <div className="app__header">
         <Header user={user}></Header>
       </div>
-      <h1>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis,
-        nihil ipsum? Asperiores, laudantium esse quo aperiam atque accusamus
-      </h1>
-      <TabsModal user={user} />
-      {/* <InstagramEmbed
-        url="https://instagr.am/p/Zw9o4/"
-        maxWidth={320}
-        hideCaption={false}
-        containerTagName="div"
-        protocol=""
-        injectScript
-        onLoading={() => {}}
-        onSuccess={() => {}}
-        onAfterRender={() => {}}
-        onFailure={() => {}}
-      /> */}
-      <div className="app__postcard__container">
-        {/* hardcoded for the moment */}
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
+      <div className="app__intro">
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis,
+          nihil ipsum? Asperiores, laudantium esse quo aperiam atque accusamus
+        </p>
       </div>
-      {user?.displayName ? (
-        // <ImageUpload username={user.displayName} />
-        <Footer username={user.displayName} />
-      ) : (
-        <h3>Login to make your post</h3>
-      )}
+      <div className="app__main">
+        <TabsModal user={user} />
+        <div className="app__postcard__container">
+          {/* hardcoded for the moment */}
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+          <PostCard />
+        </div>
+      </div>
+      <div className="app__footer">
+        {user?.displayName ? (
+          // <ImageUpload username={user.displayName} />
+          <Footer username={user.displayName} />
+        ) : (
+          <h3>Login to make your post</h3>
+        )}
+      </div>
     </div>
   );
 };

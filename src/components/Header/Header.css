@@ -4,7 +4,9 @@
     background-color: white;
     padding: 20px;
     border-bottom: 1px solid lightgray;
+    opacity: .8;
     object-fit: contain;
+
   }
 
 
