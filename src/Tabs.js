@@ -195,6 +195,7 @@ export default function TabsModal({ user }) {
               </div>
               <div className="tabs__post__instagram_embded">
                 <InstagramEmbed
+                className='tabs__instaEmbed'
                   url="https://www.instagram.com/p/CCRFTPapJrH/"
                   // url={instaUrl}
                   maxWidth={320}

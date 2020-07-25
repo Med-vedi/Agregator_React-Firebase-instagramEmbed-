@@ -56,18 +56,16 @@
   color: white;
   display: none;
 }
+/* /TO DO:
+style instaCards */
 
-/* .tabs__post{
-  max-width: 33%;
+/* .tabs__instaEmbed{
+  max-height: 100px;
 } */
+
 @media only screen and (max-width: 600px) {
   .tabs__container {
-    /* max-width: 600px; */
-    /* width: 90%; */
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* background-color: black; */
-    /* color: white; */
+
   }
 
 }
