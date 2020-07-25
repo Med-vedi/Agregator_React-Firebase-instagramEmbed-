@@ -1,13 +1,15 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:700");
+
 * {
   margin: 0;
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
 }
 
-html {
+/* html {
   height: 100%;
   overflow: hidden;
-}
-
+} */
+/* Parallax v1
 body {
   color: #000;
   margin: 0;
@@ -19,6 +21,14 @@ body {
   overflow-x: hidden;
   background: #fff;
   text-align: center;
+} */
+
+body{
+  text-align:center;
+  padding:0;
+  margin:0;
+  font-family: 'Montserrat', sans-serif;
+  background-color:#fff;
 }
 
 .app {
@@ -40,8 +50,8 @@ body {
 }
 
 
-
-.app__intro {
+/* Parallax v1 */
+/* .app__intro {
   color:#fff;
   background-color: rgba(0,0,0,.2);
 
@@ -74,19 +84,9 @@ body {
   z-index: -1;
   height: 70vh
 }
-/* 
-.app__intro * {
-  font-weight: normal;
-  letter-spacing: 0.2em;
-  text-align: center;
-  margin: 0;
-  padding: 1em 0;
-} */
-
 .app__intro p {
   background-color: rgba(0,0,0,.2)
 }
-
 .app__main {
   margin: 200px auto;
   width: 100%;
@@ -94,7 +94,53 @@ body {
   z-index: 1;
   background: #fff;
   padding: 100px 0
+} */
+
+
+/* PArallax v2 */
+.app__parallax {
+  padding:0px;
+  perspective: 1px;
+  height: 20vh;
+  font-size:40px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-perspective: 1px;
+  perspective: 1px;
 }
+.app__content{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity:.7;
+}
+.app__layer_base, .app__layer_closer, .app__layer_closest {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10% 0;
+}
+.app__layer_base {
+  transform: translateZ(-2px) scale(3);
+  color:#000;
+}
+.app__layer_closer {
+  transform: translateZ(-1px) scale(2);
+  font-size:300%;
+  color: orange;
+  filter: blur(3px);
+}
+.app__layer_closest {
+  transform: translateZ(0);
+  color:#19B5FE;
+  font-size:500%;
+  filter: blur(10px);
+}
+
 
 
 
@@ -109,10 +155,6 @@ body {
 
 .tabs__container {
   max-width: 960px;
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* background-color: black; */
-  /* color: white; */
 }
 
 .tabs__posts_container {
@@ -141,7 +183,12 @@ style instaCards */
   max-height: 100px;
 } */
 
-@media only screen and (max-width: 600px) {
-  .tabs__container {}
+@media only screen and (max-width: 800px) {
+  .app__layer_base, .app__layer_closer, .app__layer_closest {
+
+    /* padding: 20% 0; */
+  
+  }
+  
 
 }

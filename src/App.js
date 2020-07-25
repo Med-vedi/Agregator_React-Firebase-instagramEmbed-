@@ -35,12 +35,29 @@ const App = () => {
       <div className="app__header">
         <Header user={user}></Header>
       </div>
-      <div className="app__intro">
+      <div className="app__parallax">
+        <div className="app__parallax-group">
+          <div className="app__layer_base">
+            <div className="app__content">ReactJS</div>
+          </div>
+
+          <div className="app__layer_closer">
+            <div className="app__content">FireBase</div>
+          </div>
+
+          <div className="app__layer_closest">
+            <div className="app__content">JavaScript</div>
+          </div>
+        </div>
+      </div>
+
+      {/* <div className="app__intro">
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis,
           nihil ipsum? Asperiores, laudantium esse quo aperiam atque accusamus
         </p>
-      </div>
+      </div> */}
+
       <div className="app__main">
         <TabsModal user={user} />
         <div className="app__postcard__container">
