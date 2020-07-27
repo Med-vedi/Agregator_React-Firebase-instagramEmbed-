@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "./firebase";
+import { db } from "../../firebase";
 
 import PropTypes from "prop-types";
 import SwipeableViews from "react-swipeable-views";
@@ -12,8 +12,8 @@ import {
   useTheme,
 } from "@material-ui/core";
 
-import "./App.css";
-import Post from "./components/Post/Post";
+import "../../App.css";
+import Post from "../Post/Post";
 import InstagramEmbed from "react-instagram-embed";
 
 function TabPanel(props) {
@@ -217,7 +217,6 @@ export default function TabsModal({ user }) {
             index={2}
             dir={theme.direction}
           >
-            {/* <Plug /> */}
             Coming soon
           </TabPanel>
         </SwipeableViews>

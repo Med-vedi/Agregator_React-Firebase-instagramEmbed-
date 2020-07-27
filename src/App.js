@@ -6,8 +6,8 @@ import "./App.css";
 import { auth } from "./firebase";
 
 import Header from "./components/Header/Header";
-import TabsModal from "./Tabs";
-import PostCard from "./components/Card/PostCard";
+import TabsModal from "./components/Main/TabsModal";
+import PostCard from "./components/Main/Card/Card";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {

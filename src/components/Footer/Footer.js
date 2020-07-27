@@ -3,7 +3,7 @@ import { makeStyles, Popover, Fab } from "@material-ui/core";
 
 // import VideoUpload from "./Upload/VideoUpload";
 import AddIcon from "@material-ui/icons/Add";
-import ImageUpload from "../../ImageUpload";
+import ImageUpload from "./ImageUpload/ImageUpload";
 
 const useStyles = makeStyles((theme) => ({
   typography: {

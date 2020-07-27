@@ -1,6 +1,6 @@
 import React from "react";
-import "./PostCard.css";
-import img from "../../img/adi2.jpg";
+import "./Card.css";
+import img from "../../../img/adi2.jpg";
 import { Button } from "@material-ui/core";
 
 const PostCard = () => {

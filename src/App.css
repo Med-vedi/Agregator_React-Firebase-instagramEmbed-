@@ -142,6 +142,11 @@ style instaCards */
 } */
 
 @media only screen and (max-width: 600px) {
-  .tabs__container {}
+  .app__intro {
+    padding: 50%;
 
+    min-height: 10vh;
+  
+  }
+  
 }
