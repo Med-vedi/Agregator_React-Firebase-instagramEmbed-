@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core";
 
 import "../../App.css";
-import Post from "../Post/Post";
+import Post from '../Main/Post/Post';
 import InstagramEmbed from "react-instagram-embed";
 
 function TabPanel(props) {
