@@ -4,10 +4,15 @@
     background-color: white;
     padding: 20px;
     border-bottom: 1px solid lightgray;
-    /* object-fit: contain; */
+    opacity: .8;
+    object-fit: contain;
+
   }
 
+
+  
 .header__logo{
     margin: 0 auto;
 
 }
+

@@ -1,0 +1,11 @@
+.videoupload__container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 10px auto;
+
+}
+.videoupload__progress{
+    margin: 5px auto;    
+}
