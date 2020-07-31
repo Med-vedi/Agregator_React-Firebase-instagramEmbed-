@@ -56,6 +56,8 @@ function TabsModal({ user, menuItem }) {
   console.log(menuItem); //check
   const [posts, setPosts] = useState([]);
 
+  // const [liked, setLiked] = useState([]); //TO DO
+
   const classes = useStyles();
   const theme = useTheme();
 
@@ -63,7 +65,7 @@ function TabsModal({ user, menuItem }) {
     //controll and sort
     db.collection("posts")
       //TO FIX true doesn't work
-      .where("category", "==", menuItem?menuItem: true)
+      .where("category", "==", menuItem ? menuItem : true)
       //To FIX no desc ordering - WHY?
       // .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
@@ -75,6 +77,19 @@ function TabsModal({ user, menuItem }) {
         );
       });
   }, [menuItem]);
+
+  // useEffect(() => {
+  //   db.collection("posts")
+  //     .where("likes", ">=", '1')
+  //     .onSnapshot((snapshot) => {
+  //       setLiked(
+  //         snapshot.docs.map((doc) => ({
+  //           id: doc.id,
+  //           post: doc.data(),
+  //         }))
+  //       );
+  //     });
+  // }, []);
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -96,7 +111,7 @@ function TabsModal({ user, menuItem }) {
           //   aria-label="full width tabs example"
         >
           <Tab label="Posts" {...a11yProps(0)} />
-          <Tab label="InstaCards" {...a11yProps(1)} />
+          <Tab label="Favorite" {...a11yProps(1)} />
           <Tab label="Item Three" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
@@ -123,10 +138,32 @@ function TabsModal({ user, menuItem }) {
               </div>
             </div>
           </TabPanel>
+
           <TabPanel
             className="tabpanel__tab__text"
             value={value}
             index={1}
+            dir={theme.direction}
+          >
+            <div className="tabs__posts_container">
+              <div className="tabs__posts">
+                {posts.map(({ id, post }) => (
+                  <Post
+                    key={id}
+                    postId={id}
+                    user={user}
+                    username={post.username}
+                    imageUrl={post.imageUrl}
+                    className="tabs__post"
+                  />
+                ))}
+              </div>
+            </div>
+          </TabPanel>
+          <TabPanel
+            className="tabpanel__tab__text"
+            value={value}
+            index={2}
             dir={theme.direction}
           >
             <div className="tabs__posts_container">
@@ -189,14 +226,6 @@ function TabsModal({ user, menuItem }) {
                 />
               </div>
             </div>
-          </TabPanel>
-          <TabPanel
-            className="tabpanel__tab__text"
-            value={value}
-            index={2}
-            dir={theme.direction}
-          >
-            Coming soon
           </TabPanel>
         </SwipeableViews>
       </div>

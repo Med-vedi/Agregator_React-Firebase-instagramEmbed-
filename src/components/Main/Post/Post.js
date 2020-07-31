@@ -12,7 +12,6 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
     let unsubscribe;
     if (postId) {
       unsubscribe = db
-        // .collection("cards") // VideoVersion
         .collection("posts") // VideoVersion
         .doc(postId)
         .collection("comments")
@@ -28,13 +27,20 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
 
   const postComment = (e) => {
     e.preventDefault();
-    // db.collection("cards").doc(postId).collection("comments").add({// VideoVersion
     db.collection("posts").doc(postId).collection("comments").add({
       text: comment,
       username: user.displayName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
     setComment("");
+  };
+
+  const onLikeClick = (e) => {
+    e.preventDefault();
+    console.log("like");
+    db.collection("posts").doc(postId).collection("likes").add({
+      likes: 1,
+    });
   };
   return (
     <div className="post">
@@ -48,14 +54,6 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
       </div>
       <div className="post__img-hover-zoom">
         <img className="post__image" src={imageUrl} alt="" />
- 
-        { /* <video // VideoVersion
-
-          className="post__image"
-          src={videoUrl}
-          alt=""
-          onClick={(e) => e.target.play()}
-        /> */}
       </div>
       <h4 className="post__text">
         <strong>{username}</strong>: {caption}
@@ -81,9 +79,11 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
             className="post__button"
             type="submit"
             onClick={postComment}
-            // onClick={postCommentShoes}
           >
             Post
+          </button>
+          <button className="post__like" type="submit" onClick={onLikeClick}>
+            like
           </button>
         </form>
       ) : (

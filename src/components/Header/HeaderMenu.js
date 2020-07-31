@@ -6,13 +6,11 @@ import DehazeIcon from "@material-ui/icons/Dehaze";
 import Context from "../../context/context";
 
 const HeaderMenu = (props) => {
+  const [category, setCategory] = useState(""); //to arg for prop
 
-  const [category, setCategory] = useState('');//to arg for prop
-  
   const handleMenuItem = (e) => {
     setCategory(e.currentTarget.id);
-    props.menuItemClicked(category)
-
+    props.menuItemClicked(category);
   };
   return (
     <div>
@@ -28,7 +26,7 @@ const HeaderMenu = (props) => {
                 Menu
               </DehazeIcon>
               <Menu {...bindMenu(popupState)}>
-                <MenuItem onClick={handleMenuItem} id='shoes'>
+                <MenuItem onClick={handleMenuItem} id="shoes">
                   shoes
                 </MenuItem>
                 <MenuItem onClick={handleMenuItem} id="style">

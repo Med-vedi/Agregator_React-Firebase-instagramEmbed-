@@ -56,7 +56,7 @@ export default function Footer(props) {
         }}
       >
         {/* <VideoUpload username={props.username} /> */}
-        <ImageUpload username={props.username}/>
+        <ImageUpload username={props.username} />
       </Popover>
     </div>
   );
