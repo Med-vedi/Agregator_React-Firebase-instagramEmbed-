@@ -7,12 +7,17 @@ import { auth } from "./firebase";
 
 import Header from "./components/Header/Header";
 import TabsModal from "./components/Main/TabsModal";
-import PostCard from "./components/Main/Card/Card";
+// import PostCard from "./components/Main/Card/Card";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
   // const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
+
+  const [category, setCategory] = useState('')
+
+
+  const menuItemToCategory = (data) => setCategory(data)
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -33,24 +38,24 @@ const App = () => {
   return (
     <div className="app">
       <div className="app__header">
-        <Header user={user}></Header>
+        <Header user={user} menuItemClicked = {menuItemToCategory}></Header>
       </div>
-      <div className="app__intro">
+      {/* <div className="app__intro">
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis,
           nihil ipsum? Asperiores, laudantium esse quo aperiam atque accusamus
         </p>
-      </div>
+      </div> */}
       <div className="app__main">
-        <TabsModal user={user} />
+        <TabsModal user={user} menuItem={category}/>
         <div className="app__postcard__container">
           {/* hardcoded for the moment */}
+          {/* <PostCard />
           <PostCard />
           <PostCard />
           <PostCard />
           <PostCard />
-          <PostCard />
-          <PostCard />
+          <PostCard /> */}
         </div>
       </div>
       <div className="app__footer">

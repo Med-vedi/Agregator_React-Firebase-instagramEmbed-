@@ -13,12 +13,12 @@ import {
 } from "@material-ui/core";
 
 import "../../App.css";
-import Post from '../Main/Post/Post';
+import Post from "../Main/Post/Post";
 import InstagramEmbed from "react-instagram-embed";
+import Context from "../../context/context";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -52,10 +52,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TabsModal({ user }) {
-              
-  // const [cards, setCards] = useState([]); // VideoVersion
-
+function TabsModal({ user, menuItem }) {
+  console.log(menuItem); //check
   const [posts, setPosts] = useState([]);
 
   const classes = useStyles();
@@ -63,24 +61,20 @@ export default function TabsModal({ user }) {
 
   useEffect(() => {
     //controll and sort
-
-    // db.collection("cards") // VideoVersion
     db.collection("posts")
-
-      .orderBy("timestamp", "desc")
+      //TO FIX true doesn't work
+      .where("category", "==", menuItem?menuItem: true)
+      //To FIX no desc ordering - WHY?
+      // .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
-        // setCards( // VideoVersion
         setPosts(
           snapshot.docs.map((doc) => ({
             id: doc.id,
-            // card: doc.data(), // VideoVersion
-
             post: doc.data(),
           }))
         );
       });
-  }, []);
-
+  }, [menuItem]);
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -90,7 +84,6 @@ export default function TabsModal({ user }) {
   const handleChangeIndex = (index) => {
     setValue(index);
   };
-
   return (
     <div className={classes.root}>
       <AppBar position="static" color="transparent">
@@ -98,7 +91,6 @@ export default function TabsModal({ user }) {
           value={value}
           onChange={handleChange}
           //   indicatorColor="secondary"
-
           textColor="secondary"
           variant="fullWidth"
           //   aria-label="full width tabs example"
@@ -117,19 +109,6 @@ export default function TabsModal({ user }) {
           <TabPanel value={value} index={0} dir={theme.direction}>
             <div className="tabs__posts_container">
               <div className="tabs__posts">
-                {/* VideoVersion */}
-
-                {/* {cards.map(({ id, card }) => (
-                  <Post
-                    key={id}
-                    postId={id}
-                    user={user}
-                    username={card.username}
-                    caption={card.caption}
-                    videoUrl={card.videoUrl}
-                    className="tabs__post"
-                  />
-                ))} */}
                 {posts.map(({ id, post }) => (
                   <Post
                     key={id}
@@ -195,7 +174,7 @@ export default function TabsModal({ user }) {
               </div>
               <div className="tabs__post__instagram_embded">
                 <InstagramEmbed
-                className='tabs__instaEmbed'
+                  className="tabs__instaEmbed"
                   url="https://www.instagram.com/p/CCRFTPapJrH/"
                   // url={instaUrl}
                   maxWidth={320}
@@ -224,3 +203,6 @@ export default function TabsModal({ user }) {
     </div>
   );
 }
+TabsModal.contextType = Context;
+
+export default TabsModal;

@@ -14,7 +14,6 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
       unsubscribe = db
         // .collection("cards") // VideoVersion
         .collection("posts") // VideoVersion
-
         .doc(postId)
         .collection("comments")
         .orderBy("timestamp", "desc")
@@ -82,6 +81,7 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
             className="post__button"
             type="submit"
             onClick={postComment}
+            // onClick={postCommentShoes}
           >
             Post
           </button>

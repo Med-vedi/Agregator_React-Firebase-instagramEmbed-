@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles, Popover, Fab } from "@material-ui/core";
 
-// import VideoUpload from "./Upload/VideoUpload";
 import AddIcon from "@material-ui/icons/Add";
 import ImageUpload from "./ImageUpload/ImageUpload";
 
@@ -12,10 +11,7 @@ const useStyles = makeStyles((theme) => ({
   fabButton: {
     position: "fixed",
     zIndex: 1,
-    // top: -30,
     bottom: 0,
-    left: 0,
-    right: 0,
     margin: "0 auto",
   },
 }));

@@ -46,7 +46,7 @@ body {
   background-color: rgba(0,0,0,.2);
 
   box-sizing: border-box;
-  min-height: 50vh;
+  min-height: 10vh;
   padding: 30vw 0 5vw;
   position: relative;
   transform-style: inherit;
@@ -88,12 +88,12 @@ body {
 }
 
 .app__main {
-  margin: 200px auto;
+  margin: 50px auto;
   width: 100%;
   position: relative;
   z-index: 1;
   background: #fff;
-  padding: 100px 0
+  padding: 50px 0
 }
 
 

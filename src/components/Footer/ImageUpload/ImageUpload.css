@@ -9,3 +9,6 @@
 .imageupload__progress{
     margin: 5px auto;    
 }
+input{
+    padding: 15px;
+}
