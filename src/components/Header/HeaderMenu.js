@@ -11,6 +11,7 @@ const HeaderMenu = (props) => {
   const handleMenuItem = (e) => {
     setCategory(e.currentTarget.id);
     props.menuItemClicked(category);
+    console.log(category);
   };
   return (
     <div>
