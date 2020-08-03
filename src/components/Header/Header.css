@@ -1,10 +1,10 @@
 .header__container{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background-color: white;
-    padding: 20px;
+    /* padding: 20px; */
     border-bottom: 1px solid lightgray;
-    opacity: .8;
     object-fit: contain;
 
   }

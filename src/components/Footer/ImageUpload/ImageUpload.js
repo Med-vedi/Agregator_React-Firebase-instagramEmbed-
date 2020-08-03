@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Button } from "@material-ui/core";
 import { storage, db } from "../../../firebase";
 import firebase from "firebase";
 
@@ -7,15 +6,12 @@ import "./ImageUpload.css";
 
 function ImageUpload({ username }) {
   const [image, setImage] = useState(null);
-  //   const [url, setUrl] = useState("");
+  
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState("");
   const [radioValue, setRadioValue] = useState("");
 
-  //to fix
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const open = Boolean(anchorEl);
-  // const id = open ? "simple-popover" : undefined;
+
 
   const handleRadio = (e) => {
     e.preventDefault();
@@ -30,7 +26,7 @@ function ImageUpload({ username }) {
   };
   //TO DO catch empty file
   const handleUpload = () => {
-    let uploadTask = storage.ref(`images/${image.name}`).put(image);
+    let uploadTask = storage.ref(`videos/${image.name}`).put(image);
 
     console.log(uploadTask);
     uploadTask.on(
@@ -50,16 +46,16 @@ function ImageUpload({ username }) {
       () => {
         //complete function
         storage
-          .ref("images")
+          .ref("videos")
           .child(image.name)
           .getDownloadURL()
           .then((url) => {
             //post an image in  db
-            db.collection("posts").add({
+            db.collection("videos").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               caption: caption,
-              imageUrl: url,
-              username: username,
+              url: url,
+              seller: username,
               category: radioValue
             });
             setProgress(0);
@@ -76,7 +72,7 @@ function ImageUpload({ username }) {
 
   return (
     <div className="imageupload__container">
-      <h1>Share your photo</h1>
+      <h1>Share your file</h1>
       <progress className="imageupload__progress" value={progress} max="100" />
       <input
         type="text"
@@ -95,7 +91,7 @@ function ImageUpload({ username }) {
             value="shoes"
             onChange={handleRadio}
           />
-          <label for="contactChoice1">Shoes</label>
+          <label>Shoes</label>
 
           <input
             type="radio"
@@ -104,7 +100,7 @@ function ImageUpload({ username }) {
             value="style"
             onChange={handleRadio}
           />
-          <label for="contactChoice2">Style</label>
+          <label>Style</label>
 
           <input
             type="radio"
@@ -113,7 +109,7 @@ function ImageUpload({ username }) {
             value="other"
             onChange={handleRadio}
           />
-          <label for="contactChoice3">Other</label>
+          <label>Other</label>
         </div>
         <div>
           {/* <button type="submit" onClick={()=> setRadioValue('ok')}>Submit</button> */}

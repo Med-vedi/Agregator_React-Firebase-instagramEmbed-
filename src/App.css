@@ -1,5 +1,5 @@
 * {
-  margin: 0;
+  margin: 0 auto;
   font-family: sans-serif;
 }
 
@@ -7,32 +7,17 @@ html {
   height: 100%;
   overflow: hidden;
   scroll-snap-type: y mandatory;
-}
-
-body {
-  color: #000;
-  margin: 0;
-  padding: 0;
-  perspective: 1px;
-  transform-style: preserve-3d;
-  height: 100%;
-  overflow-y: scroll;
-  /*overflow-x: hidden;*/
-  background: #fff;
-  text-align: center;
-}
-
-.app {
-  /* display: grid;
-  place-items: center; */
   max-width: 960px;
-  /* background-color: #fafafa; */
-}
 
+}
+.app{
+  
+}
 .app__header {
+  position: relative;
   color: #000;
-  position: sticky;
-  z-index: 3;
+  /* position: sticky;
+  z-index: 2; */
   top: 0
 }
 
@@ -41,112 +26,50 @@ body {
   flex-direction: column;
 }
 
-
-
-.app__intro {
-  color: #fff;
-  background-color: rgba(0, 0, 0, .2);
-
-  box-sizing: border-box;
-  min-height: 10vh;
-  padding: 30vw 0 5vw;
-  position: relative;
-  transform-style: inherit;
-  width: 100%;
-}
-
-.app__intro,
-.app__intro:before {
-  background: 50% 50% / cover;
-}
-
-.app__intro::before {
-  color: #000;
-  position: absolute;
-  bottom: 0;
-  content: "Try It";
-  left: 0;
-  right: 0;
-  top: 0;
-  display: block;
-  background-image: url('./img/874.jpg');
-  background-size: cover;
-  transform-origin: center center 0;
-  transform: translateZ(-1px) scale(2);
-  z-index: -1;
-  height: 70vh
-}
-
-
-
-.app__intro p {
-  background-color: rgba(0, 0, 0, .2)
-}
-
 .app__main {
-  margin: 50px auto;
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  background: #fff;
-  padding: 50px 0
-}
-
-
-
-.app__postcard__container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-
-.tabs__container {
-  max-width: 960px;
-}
-
-.tabs__posts_container {
-  scroll-snap-type: y mandatory;
-
+  display: grid;
+  place-items: center;
   position: relative;
   height: 800px;
   overflow: scroll;
   width: 80%;
   min-width: 500px;
-
-
+  scroll-snap-type: y mandatory;
 
 }
+
 /* hide scrollbar from Chrome, Safari and Opera */
-.tabs__posts_container::-webkit-scrollbar{
+.app__main::-webkit-scrollbar {
   display: hidden;
 }
+
 /* hide scrollbar from IE, EDGE and Firefox */
-.tabs__posts_container{
-  -ms-overflow-style: none; /*IE EDGE */
-  scrollbar-width: none; /*Firefox */
+.app__main {
+  -ms-overflow-style: none;
+  /*IE EDGE */
+  scrollbar-width: none;
+  /*Firefox */
 }
 
 
-.tabs__post__instagram_embded {
-  max-width: 340px;
-  margin-left: 10px;
-
+.app__footer {
+  position: sticky;
+  z-index: 3;
+  bottom: 0;
+  margin: 0 auto;
 }
-
-
-.tabs__tab__text {
-  color: white;
-  display: none;
-}
-
 
 @media only screen and (max-width: 600px) {
+  .app__main {
+    overflow: scroll;
+    display: inline-block;
+
+    min-width: 500px;
+
+  }
+
   .app__intro {
     padding: 50%;
-
     min-height: 10vh;
 
   }

@@ -8,7 +8,7 @@ import firebase from "firebase";
 // likes counter
 // toggle option for likes button
 
-function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
+function Post({ postId, imageUrl, username, user, caption }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
 
@@ -16,7 +16,7 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
     let unsubscribe;
     if (postId) {
       unsubscribe = db
-        .collection("posts") // VideoVersion
+        .collection("posts")
         .doc(postId)
         .collection("comments")
         .orderBy("timestamp", "desc")

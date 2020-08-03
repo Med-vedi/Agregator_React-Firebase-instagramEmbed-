@@ -7,9 +7,6 @@ import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 import { auth } from "../../firebase";
 
 const Header = ({ user, menuItemClicked }) => {
-  // const user = props.user
-  // console.log(props);
-
   return (
     <div className="header__container">
       <HeaderMenu menuItemClicked={menuItemClicked} />

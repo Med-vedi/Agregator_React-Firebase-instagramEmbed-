@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
-// import InstagramEmbed from "react-instagram-embed";
-
 import "./App.css";
 
-import { auth } from "./firebase";
+import { auth, db } from "./firebase";
 
 import Header from "./components/Header/Header";
-import TabsModal from "./components/Main/TabsModal";
-// import PostCard from "./components/Main/Card/Card";
+import Video from './components/Main/VideoPost/Video'
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
   // const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
+  const [videos, setVideos] = useState([]);
 
   const [category, setCategory] = useState("");
 
@@ -34,32 +32,34 @@ const App = () => {
     };
   }, [user]);
 
+  
+  useEffect(() => {
+    db.collection("videos").onSnapshot((snapshot) =>
+      setVideos(snapshot.docs.map((doc) => ({ id: doc.id, video: doc.data() })))
+    );
+  }, [videos]);
+
   return (
     <div className="app">
       <div className="app__header">
         <Header user={user} menuItemClicked={menuItemToCategory}></Header>
       </div>
-      {/* <div className="app__intro">
-        <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis,
-          nihil ipsum? Asperiores, laudantium esse quo aperiam atque accusamus
-        </p>
-      </div> */}
       <div className="app__main">
-        <TabsModal user={user} menuItem={category} />
-        <div className="app__postcard__container">
-          {/* hardcoded for the moment */}
-          {/* <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard />
-          <PostCard /> */}
-        </div>
+      {videos.map(({ id, video, likes, category }) => (
+                  <Video
+                    key={id}
+                    videoId={id}
+                    url={video.url}
+                    description={video.description}
+                    seller={video.seller}
+                    likes={video.likes}
+                  />
+                ))}
+        {/* <TabsModal user={user} menuItem={category} /> */}
+        <div className="app__postcard__container"></div>
       </div>
       <div className="app__footer">
         {user?.displayName ? (
-          // <ImageUpload username={user.displayName} />
           <Footer username={user.displayName} />
         ) : (
           <h3>Login to make your post</h3>

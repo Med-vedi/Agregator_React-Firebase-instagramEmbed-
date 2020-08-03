@@ -14,15 +14,12 @@ import {
 
 import "../../App.css";
 import Post from "../Main/Post/Post";
-import Video from '../Main/VideoPost/Video'
+import Video from "../Main/VideoPost/Video";
 // import InstagramEmbed from "react-instagram-embed";
 
 // -----------------TO DO-----------------
 // catch likes => post to tab 'favorites'
 // post on start to fix (category?category posts: all posts ordered by date)
-
-
-
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,17 +50,13 @@ function a11yProps(index) {
 }
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    // backgroundColor: theme.palette.background.paper,
-    // width: 500,
-  },
+  root: {},
 }));
 
 function TabsModal({ user, menuItem }) {
-  console.log(menuItem); //check
+  // console.log(menuItem); //check
   const [posts, setPosts] = useState([]);
-
-  // const [liked, setLiked] = useState([]); //TO DO
+  const [videos, setVideos] = useState([]);
 
   const classes = useStyles();
   const theme = useTheme();
@@ -71,9 +64,23 @@ function TabsModal({ user, menuItem }) {
   useEffect(() => {
     //controll and sort
     db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            post: doc.data(),
+          }))
+        );
+      });
+  }, []); //on the start
+
+  useEffect(() => {
+    //controll and sort
+    db.collection("posts")
       //TO DO true doesn't work
       .where("category", "==", menuItem ? menuItem : true)
-      //TO DO 
+      //TO DO
       // .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
         setPosts(
@@ -83,20 +90,14 @@ function TabsModal({ user, menuItem }) {
           }))
         );
       });
-  }, [menuItem]);
+  }, [menuItem]); //controlling the menu changes
 
-  // useEffect(() => {
-  //   db.collection("posts")
-  //     .where("likes", ">=", '1')
-  //     .onSnapshot((snapshot) => {
-  //       setLiked(
-  //         snapshot.docs.map((doc) => ({
-  //           id: doc.id,
-  //           post: doc.data(),
-  //         }))
-  //       );
-  //     });
-  // }, []);
+  useEffect(() => {
+    db.collection("videos").onSnapshot((snapshot) =>
+      setVideos(snapshot.docs.map((doc) => ({ id: doc.id, video: doc.data() })))
+    );
+  }, [videos]);
+
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -131,17 +132,7 @@ function TabsModal({ user, menuItem }) {
           <TabPanel value={value} index={0} dir={theme.direction}>
             <div className="tabs__posts_container">
               <div className="tabs__posts">
-                {posts.map(({ id, post }) => (
-                  <Post
-                    key={id}
-                    postId={id}
-                    user={user}
-                    username={post.username}
-                    caption={post.caption}
-                    imageUrl={post.imageUrl}
-                    className="tabs__post"
-                  />
-                ))}
+
               </div>
             </div>
           </TabPanel>
@@ -153,18 +144,7 @@ function TabsModal({ user, menuItem }) {
             dir={theme.direction}
           >
             <div className="tabs__posts_container">
-              <div className="tabs__posts">
-                {posts.map(({ id, post }) => (
-                  <Post
-                    key={id}
-                    postId={id}
-                    user={user}
-                    username={post.username}
-                    imageUrl={post.imageUrl}
-                    className="tabs__post"
-                  />
-                ))}
-              </div>
+              <div className="tabs__posts"></div>
             </div>
           </TabPanel>
           <TabPanel
@@ -173,13 +153,17 @@ function TabsModal({ user, menuItem }) {
             index={2}
             dir={theme.direction}
           >
-            <Video/>
-            <Video/>
-            <Video/>
-            <Video/>
-            <Video/>
-            <Video/>
-
+            {posts.map(({ id, post }) => (
+              <Post
+                key={id}
+                postId={id}
+                user={user}
+                username={post.username}
+                caption={post.caption}
+                imageUrl={post.imageUrl}
+                className="tabs__post"
+              />
+            ))}
           </TabPanel>
         </SwipeableViews>
       </div>
