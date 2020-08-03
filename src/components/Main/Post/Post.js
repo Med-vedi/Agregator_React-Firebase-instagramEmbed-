@@ -4,6 +4,10 @@ import "./Post.css";
 import { db } from "../../../firebase";
 import firebase from "firebase";
 
+// ----------TO DO:---------- 
+// likes counter
+// toggle option for likes button
+
 function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
@@ -39,7 +43,7 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
     e.preventDefault();
     console.log("like");
     db.collection("posts").doc(postId).collection("likes").add({
-      likes: 1,
+      likes: 1, //TO DO 
     });
   };
   return (
@@ -82,6 +86,7 @@ function Post({ postId, videoUrl, imageUrl, username, user, caption }) {
           >
             Post
           </button>
+          {/* TO DO */}
           <button className="post__like" type="submit" onClick={onLikeClick}>
             like
           </button>

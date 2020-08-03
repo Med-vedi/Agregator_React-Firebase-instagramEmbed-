@@ -15,7 +15,13 @@ import {
 import "../../App.css";
 import Post from "../Main/Post/Post";
 import InstagramEmbed from "react-instagram-embed";
-import Context from "../../context/context";
+
+// -----------------TO DO-----------------
+// catch likes => post to tab 'favorites'
+// post on start to fix (category?category posts: all posts ordered by date)
+
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -64,9 +70,9 @@ function TabsModal({ user, menuItem }) {
   useEffect(() => {
     //controll and sort
     db.collection("posts")
-      //TO FIX true doesn't work
+      //TO DO true doesn't work
       .where("category", "==", menuItem ? menuItem : true)
-      //To FIX no desc ordering - WHY?
+      //TO DO 
       // .orderBy("timestamp", "desc")
       .onSnapshot((snapshot) => {
         setPosts(
@@ -232,6 +238,5 @@ function TabsModal({ user, menuItem }) {
     </div>
   );
 }
-TabsModal.contextType = Context;
 
 export default TabsModal;

@@ -3,7 +3,9 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import DehazeIcon from "@material-ui/icons/Dehaze";
-import Context from "../../context/context";
+
+// -------------TO DO------------
+// category state update issue to fix
 
 const HeaderMenu = (props) => {
   const [category, setCategory] = useState(""); //to arg for prop
@@ -15,7 +17,6 @@ const HeaderMenu = (props) => {
   };
   return (
     <div>
-      <Context.Provider category={category}>
         <PopupState variant="popover" popupId="demo-popup-menu">
           {(popupState) => (
             <React.Fragment>
@@ -40,7 +41,6 @@ const HeaderMenu = (props) => {
             </React.Fragment>
           )}
         </PopupState>
-      </Context.Provider>
     </div>
   );
 };

@@ -1,0 +1,15 @@
+.videoFooter{
+    display: flex;
+    position: relative;
+    bottom: 100px;
+    color: white;
+
+}
+.videoFooter__text{
+    flex:1
+}
+.videoFooter__Buttons{
+    text-align: center;
+    padding: 30px;
+    
+}
