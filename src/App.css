@@ -23,8 +23,8 @@ body {
 }
 
 .app {
-  display: grid;
-    place-items: center;
+  /* display: grid;
+  place-items: center; */
   max-width: 960px;
   /* background-color: #fafafa; */
 }
@@ -108,16 +108,15 @@ body {
 }
 
 .tabs__posts_container {
+  scroll-snap-type: y mandatory;
+
   position: relative;
   height: 800px;
   overflow: scroll;
   width: 80%;
   min-width: 500px;
-  scroll-snap-type: y mandatory;
 
-/*  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;*/
+
 
 }
 /* hide scrollbar from Chrome, Safari and Opera */
@@ -143,12 +142,6 @@ body {
   display: none;
 }
 
-/* /TO DO:
-style instaCards */
-
-/* .tabs__instaEmbed{
-  max-height: 100px;
-} */
 
 @media only screen and (max-width: 600px) {
   .app__intro {

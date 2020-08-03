@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 import "./Video.css";
-import img from "../image/adi1.jpg";
 import cls from "classnames";
-import clip from "../image/stor.mp4";
+import clip from "../../../img/stor.mp4";
 import { useState } from "react";
 import VideoFooter from "./VideoFooter";
+import { useEffect } from "react";
 
-export const Video = () => {
+
+const Video = () => {
   const videoRef = useRef(null);
 
   const [playing, setPlaying] = useState(false)
@@ -15,6 +16,7 @@ export const Video = () => {
   const handlePostClick = () => {
     setOpen((s) => !s);
   };
+
 
   const onVideoPress = () => {
       if(playing){
@@ -44,3 +46,5 @@ export const Video = () => {
     </div>
   );
 };
+
+export default Video

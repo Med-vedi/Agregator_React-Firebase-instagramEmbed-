@@ -14,7 +14,8 @@ import {
 
 import "../../App.css";
 import Post from "../Main/Post/Post";
-import InstagramEmbed from "react-instagram-embed";
+import Video from '../Main/VideoPost/Video'
+// import InstagramEmbed from "react-instagram-embed";
 
 // -----------------TO DO-----------------
 // catch likes => post to tab 'favorites'
@@ -172,66 +173,13 @@ function TabsModal({ user, menuItem }) {
             index={2}
             dir={theme.direction}
           >
-            <div className="tabs__posts_container">
-              <div className="tabs__post__instagram_embded">
-                <InstagramEmbed
-                  url="https://www.instagram.com/p/CClQQy2lj23/"
-                  maxWidth={320}
-                  hideCaption={true}
-                  containerTagName="div"
-                  protocol=""
-                  injectScript
-                  onLoading={() => {}}
-                  onSuccess={() => {}}
-                  onAfterRender={() => {}}
-                  onFailure={() => {}}
-                />
-              </div>
-              <div className="tabs__post__instagram_embded">
-                <InstagramEmbed
-                  url="https://www.instagram.com/p/CCaoZ1EDHil/"
-                  maxWidth={320}
-                  hideCaption={true}
-                  containerTagName="div"
-                  protocol=""
-                  injectScript
-                  onLoading={() => {}}
-                  onSuccess={() => {}}
-                  onAfterRender={() => {}}
-                  onFailure={() => {}}
-                />
-              </div>
-              <div className="tabs__post__instagram_embded">
-                <InstagramEmbed
-                  url="https://www.instagram.com/p/CC6nDTTBvPW/"
-                  maxWidth={320}
-                  hideCaption={true}
-                  containerTagName="div"
-                  protocol=""
-                  injectScript
-                  onLoading={() => {}}
-                  onSuccess={() => {}}
-                  onAfterRender={() => {}}
-                  onFailure={() => {}}
-                />
-              </div>
-              <div className="tabs__post__instagram_embded">
-                <InstagramEmbed
-                  className="tabs__instaEmbed"
-                  url="https://www.instagram.com/p/CCRFTPapJrH/"
-                  // url={instaUrl}
-                  maxWidth={320}
-                  hideCaption={true}
-                  containerTagName="div"
-                  protocol=""
-                  injectScript
-                  onLoading={() => {}}
-                  onSuccess={() => {}}
-                  onAfterRender={() => {}}
-                  onFailure={() => {}}
-                />
-              </div>
-            </div>
+            <Video/>
+            <Video/>
+            <Video/>
+            <Video/>
+            <Video/>
+            <Video/>
+
           </TabPanel>
         </SwipeableViews>
       </div>
