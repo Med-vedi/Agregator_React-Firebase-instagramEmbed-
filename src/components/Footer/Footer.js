@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles, Popover, Fab } from "@material-ui/core";
 
 import AddIcon from "@material-ui/icons/Add";
-import ImageUpload from "./ImageUpload/ImageUpload";
 import VideoUpload from './ImageUpload/VideoUpload'
 
 const useStyles = makeStyles((theme) => ({
