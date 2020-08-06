@@ -4,7 +4,7 @@ import "./App.css";
 import { auth, db } from "./firebase";
 
 import Header from "./components/Header/Header";
-import Video from './components/Main/VideoPost/Video'
+import Video from "./components/Main/VideoPost/Video";
 import Footer from "./components/Footer/Footer";
 
 const App = () => {
@@ -32,7 +32,6 @@ const App = () => {
     };
   }, [user]);
 
-  
   useEffect(() => {
     db.collection("videos").onSnapshot((snapshot) =>
       setVideos(snapshot.docs.map((doc) => ({ id: doc.id, video: doc.data() })))
@@ -45,16 +44,18 @@ const App = () => {
         <Header user={user} menuItemClicked={menuItemToCategory}></Header>
       </div>
       <div className="app__main">
-      {videos.map(({ id, video, likes, category }) => (
-                  <Video
-                    key={id}
-                    videoId={id}
-                    url={video.url}
-                    description={video.description}
-                    seller={video.seller}
-                    likes={video.likes}
-                  />
-                ))}
+        <div className="app__main_video">
+          {videos.map(({ id, video, likes, category }) => (
+            <Video
+              key={id}
+              videoId={id}
+              url={video.url}
+              description={video.description}
+              seller={video.seller}
+              likes={video.likes}
+            />
+          ))}
+        </div>
         {/* <TabsModal user={user} menuItem={category} /> */}
         <div className="app__postcard__container"></div>
       </div>

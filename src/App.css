@@ -27,8 +27,9 @@ html {
 }
 
 .app__main {
-  display: grid;
-  place-items: center;
+  /* display: grid;
+  place-items: center; */
+  display: flex;
   position: relative;
   height: 800px;
   overflow: scroll;
@@ -45,6 +46,7 @@ html {
 
 /* hide scrollbar from IE, EDGE and Firefox */
 .app__main {
+
   -ms-overflow-style: none;
   /*IE EDGE */
   scrollbar-width: none;

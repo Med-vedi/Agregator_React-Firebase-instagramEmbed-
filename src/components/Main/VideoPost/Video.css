@@ -3,7 +3,7 @@
     position: relative;
     border: 1px solid white;
     /* height: 500px; */
-    width: 25%;
+    /* width: 25%; */
     max-height: 250px;
     scroll-snap-align: start;
 
