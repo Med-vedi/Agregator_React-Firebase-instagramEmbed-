@@ -51,8 +51,8 @@ function VideoUpload({ username }) {
             db.collection("videos").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               seller: username,
-              caption: caption,
-              url: url,
+              description: caption,
+              videoUrl: url,
               likes:0,
               username: username,
             });

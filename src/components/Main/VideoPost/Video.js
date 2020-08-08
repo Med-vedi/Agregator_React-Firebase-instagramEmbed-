@@ -6,7 +6,7 @@ import VideoFooter from "./VideoFooter";
 // import { db } from "../../../firebase";
 // import { useEffect } from "react";
 
-const Video = ({ videoId, url, description, seller, likes }) => {
+const Video = ({ videoId, videoUrl, description, seller, likes }) => {
   // console.log({videoId});
   const videoRef = useRef(null);
 
@@ -36,7 +36,7 @@ const Video = ({ videoId, url, description, seller, likes }) => {
         // loop
         onClick={onVideoPress}
         ref={videoRef}
-        src={url}
+        src={videoUrl}
       ></video>
       <div className="video__footer">
         <VideoFooter

@@ -37,7 +37,7 @@ const App = () => {
       setVideos(snapshot.docs.map((doc) => ({ id: doc.id, video: doc.data() })))
     );
   }, [videos]);
-
+  console.log(category);
   return (
     <div className="app">
       <div className="app__header">
@@ -49,7 +49,7 @@ const App = () => {
             <Video
               key={id}
               videoId={id}
-              url={video.url}
+              videoUrl={video.videoUrl}
               description={video.description}
               seller={video.seller}
               likes={video.likes}
