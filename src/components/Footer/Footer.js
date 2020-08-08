@@ -4,7 +4,6 @@ import { makeStyles, Popover, Fab } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import VideoUpload from './ImageUpload/VideoUpload'
 
-import './Footer.css'
 
 const useStyles = makeStyles((theme) => ({
   typography: {

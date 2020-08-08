@@ -32,7 +32,7 @@ const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
   return (
     <div className={cls(`video`, { video__open: isOpen })}>
       <video
-        className='video__player'
+        className={cls(`video__player`, { video__open: isOpen })}
         // loop
         onClick={onVideoPress}
         ref={videoRef}

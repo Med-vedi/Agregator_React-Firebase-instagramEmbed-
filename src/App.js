@@ -37,7 +37,7 @@ const App = () => {
       setVideos(snapshot.docs.map((doc) => ({ id: doc.id, video: doc.data() })))
     );
   }, [videos]);
-  console.log(category);
+  // console.log(category);
   return (
     <div className="app">
       <div className="app__header">
@@ -59,13 +59,16 @@ const App = () => {
         </div>
         {/* <TabsModal user={user} menuItem={category} /> */}
         {/* <div className="app__postcard__container"></div> */}
-      </div>
-      <div className="app__footer">
-        {user?.displayName ? (
-          <Footer username={user.displayName} />
-        ) : (
-          <h3>Login to make your post</h3>
-        )}
+        <div className="app__footer">
+          {user?.displayName ? (
+            <Footer username={user.displayName} />
+          ) : (
+            <h3>Login to make your post</h3>
+          )}
+        </div>
+        
+        <div className="app__footer_contacts">Contacts</div>
+
       </div>
     </div>
   );

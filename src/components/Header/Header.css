@@ -1,11 +1,14 @@
 .header__container{
+  /* display: grid;
+  place-items: center; */
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: white;
     /* padding: 20px; */
     border-bottom: 1px solid lightgray;
-    object-fit: contain;
+    max-width: 960px;
+    /* object-fit: contain; */
 
   }
 

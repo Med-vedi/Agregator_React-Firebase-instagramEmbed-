@@ -11,8 +11,8 @@ const HeaderMenu = (props) => {
   const [category, setCategory] = useState(""); //to arg for prop
 
   const handleMenuItem = (e) => {
-    setCategory(e.currentTarget.id);
-    props.menuItemClicked(category);
+    // setCategory(e.currentTarget.id);
+    // props.menuItemClicked(category);
     console.log(category);
   };
   return (
