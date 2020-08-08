@@ -53,6 +53,7 @@ const App = () => {
               description={video.description}
               seller={video.seller}
               likes={video.likes}
+              user={user}
             />
           ))}
         </div>

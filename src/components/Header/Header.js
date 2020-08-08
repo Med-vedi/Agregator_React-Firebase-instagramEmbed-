@@ -11,7 +11,7 @@ const Header = ({ user, menuItemClicked }) => {
     <div className="header__container">
       <HeaderMenu menuItemClicked={menuItemClicked} />
       <div className="header__logo">
-        <h1>Header</h1>
+        {user?<h1>Hi, {user.displayName}</h1>:<h1>Guest</h1>}
       </div>
       {user ? (
         <PauseCircleOutlineIcon color="error" onClick={() => auth.signOut()} />
