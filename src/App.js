@@ -57,7 +57,7 @@ const App = () => {
           ))}
         </div>
         {/* <TabsModal user={user} menuItem={category} /> */}
-        <div className="app__postcard__container"></div>
+        {/* <div className="app__postcard__container"></div> */}
       </div>
       <div className="app__footer">
         {user?.displayName ? (

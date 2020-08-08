@@ -2,9 +2,9 @@
     /* display: flex; */
     position: relative;
     border: 1px solid white;
-    /* height: 500px; */
+    height: 250px;
     /* width: 25%; */
-    max-height: 250px;
+    /* max-height: 250px; */
     scroll-snap-align: start;
 
 }
@@ -14,27 +14,31 @@
     /* height: 100%; */
     object-fit: cover;
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
 
 }
 
 .video__open {
     /* position: absolute; */
-    /* height: 80vh;
-    width: auto; */
+    height: 100%;
+    width: auto;
 }
+.video__footer{
+    position: absolute;
+    width: 100%;
+    top: 0px;
+    background-color: black;
+    opacity: .7;
 
-.video__p_open {
-    /* height: 80vh; */
 }
 
 @media only screen and (max-width: 600px) {
     .video {
         position: relative;
-        border: 1px solid white;
+        /* border: 1px solid white; */
         /* height: 500px; */
-        width: 100%;
-        height: 300px;
+        /* width: 100%; */
+        /* height: 300px; */
         scroll-snap-align: start;
 
     }

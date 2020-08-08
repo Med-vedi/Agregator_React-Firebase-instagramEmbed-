@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core";
 import { storage, db } from "../../../firebase";
 import firebase from "firebase";
 
-// import "./VideoUpload.css";
+import "./VideoUpload.css";
 
 function VideoUpload({ username }) {
   const [video, setVideo] = useState(null);
@@ -51,7 +51,9 @@ function VideoUpload({ username }) {
             db.collection("videos").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               seller: username,
+              caption: caption,
               url: url,
+              likes:0,
               username: username,
             });
             setProgress(0);
@@ -75,7 +77,7 @@ function VideoUpload({ username }) {
         value={caption}
       />
       <input type="file" onChange={handleChange} />
-      <Button onClick={handleUpload}>Upload</Button>
+      <Button className='videoupload__btn' onClick={handleUpload}>Upload</Button>
     </div>
   );
 }

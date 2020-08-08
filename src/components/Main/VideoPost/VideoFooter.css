@@ -1,20 +1,21 @@
 .videoFooter {
     display: flex;
     position: relative;
-    bottom: 100px;
+    /* bottom: 100px; */
     color: white;
 
 }
 
 .videoFooter__text {
+    /* display: flex;
+    flex-direction: column; */
+    /* justify-content: center; */
     padding: 10px;
     flex: 1;
-    text-align: start;
-
 }
 
 .videoFooter__Buttons {
     text-align: center;
-    padding: 30px;
+    padding: 5px 30px;
 
 }
