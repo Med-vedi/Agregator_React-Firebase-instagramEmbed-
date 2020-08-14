@@ -47,7 +47,7 @@ function VideoUpload({ username }) {
           .child(video.name)
           .getDownloadURL()
           .then((url) => {
-            //post an video in  db
+            //post a video in  db
             db.collection("videos").add({
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               seller: username,

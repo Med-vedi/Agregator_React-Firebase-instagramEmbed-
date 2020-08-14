@@ -66,7 +66,7 @@ const App = () => {
             <h3>Login to make your post</h3>
           )}
         </div>
-        
+
         <div className="app__footer_contacts">Contacts</div>
 
       </div>

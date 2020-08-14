@@ -7,7 +7,7 @@ import VideoFooter from "./VideoFooter";
 // import { useEffect } from "react";
 
 const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
-  // console.log({videoId});
+  // console.log({videoUrl});
   const videoRef = useRef(null);
 
   const [playing, setPlaying] = useState(false);

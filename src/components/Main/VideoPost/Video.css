@@ -8,6 +8,7 @@
 
 .video__player {
     object-fit: cover;
+    height: 250px;
     width: 100%;
 }
 
@@ -16,7 +17,8 @@
     max-height: 90vh;
     object-fit: cover;
 }
-.video__footer{
+
+.video__footer {
     position: absolute;
     width: 100%;
     top: 0px;
@@ -25,6 +27,4 @@
 
 }
 
-@media only screen and (max-width: 600px) {
-
-}
+@media only screen and (max-width: 600px) {}
