@@ -9,8 +9,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   fabButton: {
-    zIndex: 1,
-    bottom: '35px',
+    // zIndex: 3,
+    // bottom: '50px',
   },
 }));
 
@@ -46,11 +46,11 @@ export default function Footer(props) {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: "bottom",
+          vertical: "top",
           horizontal: "center",
         }}
         transformOrigin={{
-          vertical: "top",
+          vertical: "bottom",
           horizontal: "center",
         }}
       >

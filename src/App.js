@@ -15,7 +15,10 @@ const App = () => {
   const [category, setCategory] = useState("");
 
   const menuItemToCategory = (data) => setCategory(data);
-
+  
+  const Test = (e) => {
+    e.currentTarget.innerHTML = 'Check out the icon in the corner'
+  }
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -67,7 +70,7 @@ const App = () => {
           {user?.displayName ? (
             <Footer username={user.displayName} />
           ) : (
-            <h3>Login to make your post</h3>
+            <button onClick={Test}>Login to make your post</button>
           )}
         </div>
     </div>
