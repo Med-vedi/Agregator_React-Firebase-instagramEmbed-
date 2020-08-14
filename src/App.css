@@ -4,7 +4,6 @@
 }
 
 html {
-  /* height: 100%; */
   overflow: hidden;
   scroll-snap-type: y mandatory;
   max-width: 960px;
@@ -13,12 +12,16 @@ html {
 
 .app {
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .app__header {
   position: relative;
   color: #000;
-  top: 0
+  width: 90%;
+  top: 0;
+  flex-shrink: 0;
 }
 
 .app__signup {
@@ -27,8 +30,9 @@ html {
 }
 
 .app__main {
-  display: grid;
-  place-items: center;
+  flex-grow: 1;
+  width: 100%;
+
   overflow: scroll;
   scroll-snap-type: y mandatory;
   /* margin-bottom: 100px; */
@@ -48,13 +52,14 @@ html {
   scrollbar-width: none;
   /*Firefox */
 }
-.app__main_video{
+
+.app__main_video {
   height: 90vh;
 }
-.app__footer {
-  position: sticky;
-  z-index: 3;
-  background-color: honeydew;
+
+.app__footer h3{
+  flex-shrink: 0;
+
 }
 
 @media only screen and (max-width: 600px) {

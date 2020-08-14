@@ -2,18 +2,15 @@ import React from "react";
 import { makeStyles, Popover, Fab } from "@material-ui/core";
 
 import AddIcon from "@material-ui/icons/Add";
-import VideoUpload from './ImageUpload/VideoUpload'
-
+import VideoUpload from "./ImageUpload/VideoUpload";
 
 const useStyles = makeStyles((theme) => ({
   typography: {
     padding: theme.spacing(2),
   },
   fabButton: {
-    position: "fixed",
     zIndex: 1,
-    bottom: 0,
-    margin: "0 auto",
+    bottom: '35px',
   },
 }));
 

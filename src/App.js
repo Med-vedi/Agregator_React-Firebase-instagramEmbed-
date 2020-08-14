@@ -59,17 +59,17 @@ const App = () => {
         </div>
         {/* <TabsModal user={user} menuItem={category} /> */}
         {/* <div className="app__postcard__container"></div> */}
-        <div className="app__footer">
+
+
+        {/* <div className="app__footer_contacts">Contacts</div> */}
+      </div>
+      <div className="app__footer">
           {user?.displayName ? (
             <Footer username={user.displayName} />
           ) : (
             <h3>Login to make your post</h3>
           )}
         </div>
-
-        <div className="app__footer_contacts">Contacts</div>
-
-      </div>
     </div>
   );
 };

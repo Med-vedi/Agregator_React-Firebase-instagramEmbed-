@@ -53,7 +53,7 @@ function VideoUpload({ username }) {
               seller: username,
               description: caption,
               videoUrl: url,
-              likes:0,
+              likes: 0,
               username: username,
             });
             setProgress(0);
@@ -77,7 +77,9 @@ function VideoUpload({ username }) {
         value={caption}
       />
       <input type="file" onChange={handleChange} />
-      <Button className='videoupload__btn' onClick={handleUpload}>Upload</Button>
+      <Button className="videoupload__btn" onClick={handleUpload}>
+        Upload
+      </Button>
     </div>
   );
 }

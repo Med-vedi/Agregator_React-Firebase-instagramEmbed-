@@ -11,36 +11,35 @@ const HeaderMenu = (props) => {
   const [category, setCategory] = useState(""); //to arg for prop
 
   const handleMenuItem = (e) => {
-    // setCategory(e.currentTarget.id);
-    // props.menuItemClicked(category);
-    console.log(category);
+    // console.log(e.currentTarget.id);
+    setCategory(e.currentTarget.id);
   };
   return (
     <div>
-        <PopupState variant="popover" popupId="demo-popup-menu">
-          {(popupState) => (
-            <React.Fragment>
-              <DehazeIcon
-                variant="contained"
-                color="primary"
-                {...bindTrigger(popupState)}
-              >
-                Menu
-              </DehazeIcon>
-              <Menu {...bindMenu(popupState)}>
-                <MenuItem onClick={handleMenuItem} id="shoes">
-                  shoes
-                </MenuItem>
-                <MenuItem onClick={handleMenuItem} id="style">
-                  style
-                </MenuItem>
-                <MenuItem onClick={popupState.close} id="other">
-                  other
-                </MenuItem>
-              </Menu>
-            </React.Fragment>
-          )}
-        </PopupState>
+      <PopupState variant="popover" popupId="demo-popup-menu">
+        {(popupState) => (
+          <React.Fragment>
+            <DehazeIcon
+              variant="contained"
+              color="primary"
+              {...bindTrigger(popupState)}
+            >
+              Menu
+            </DehazeIcon>
+            <Menu {...bindMenu(popupState)}>
+              <MenuItem onClick={handleMenuItem} id="shoes">
+                Shoes
+              </MenuItem>
+              <MenuItem onClick={handleMenuItem} id="style">
+                Style
+              </MenuItem>
+              <MenuItem onClick={handleMenuItem} id="other">
+                Other
+              </MenuItem>
+            </Menu>
+          </React.Fragment>
+        )}
+      </PopupState>
     </div>
   );
 };
