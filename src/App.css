@@ -24,8 +24,7 @@ html {
   top: 0;
   color: #000;
   width: 100%;
-
-
+  max-width: 960px;
 }
 
 .app__signup {
