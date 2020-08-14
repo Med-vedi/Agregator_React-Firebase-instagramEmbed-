@@ -1,4 +1,6 @@
 import React, { useRef } from "react";
+import ReactPlayer from 'react-player'
+
 import "./Video.css";
 import cls from "classnames";
 import { useState } from "react";
@@ -35,6 +37,7 @@ const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
         className={cls(`video__player`, { video__open: isOpen })}
         // loop
         onClick={onVideoPress}
+        playsInline
         ref={videoRef}
         src={videoUrl}
       ></video>
