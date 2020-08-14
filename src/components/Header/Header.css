@@ -1,13 +1,8 @@
 .header__container {
   display: flex;
-  /* width: 100%; */
   align-items: center;
   justify-content: space-between;
-  background-color: white;
-  border-bottom: 1px solid lightgray;
-  max-width: 960px;
-  /* object-fit: contain; */
-
+  /* border-bottom: 1px solid lightgray; */
 }
 
 
@@ -15,4 +10,7 @@
 .header__logo {
   text-align: center;
   flex: 1;
+  
 }
+
+

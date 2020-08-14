@@ -17,11 +17,15 @@ html {
 }
 
 .app__header {
-  position: relative;
-  color: #000;
-  width: 90%;
+
+  background-color: rgba(255, 255, 255, .2);
+  position: fixed;
+  z-index: 1;
   top: 0;
-  flex-shrink: 0;
+  color: #000;
+  width: 100%;
+
+
 }
 
 .app__signup {
@@ -30,9 +34,10 @@ html {
 }
 
 .app__main {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
   overflow: scroll;
   scroll-snap-type: y mandatory;
   /* margin-bottom: 100px; */
@@ -54,7 +59,9 @@ html {
 }
 
 .app__main_video {
-  height: 90vh;
+  height: 100vh;
+  /* height: 30%; */
+
 }
 
 .app__footer {

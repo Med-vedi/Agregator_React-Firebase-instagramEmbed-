@@ -1,27 +1,35 @@
 .video {
+    display: flex;
+    flex-direction: column;
     position: relative;
     border: 1px solid white;
-    height: 250px;
+    height: 33%;
     scroll-snap-align: start;
 
 }
 
 .video__player {
+    /* object-fit: none;
+    object-position: 50% 50%; */
+
     object-fit: cover;
-    height: 250px;
+    height: 100%;
     width: 100%;
 }
 
 .video__open {
-    height: 100%;
-    max-height: 90vh;
+    position: fixed;
+    top: 0;
+    flex:1;
+    z-index: 2;
     object-fit: cover;
 }
 
 .video__footer {
     position: absolute;
     width: 100%;
-    top: 0px;
+    /* top: 0px; */
+    bottom: 0;
     background-color: black;
     opacity: .7;
 
