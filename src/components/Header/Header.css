@@ -12,10 +12,19 @@
   flex: 1;
 }
 
-.header__login{
+.header__login {
   margin: 0 20px;
 }
 
+.simpleMenu__menuBtn {
+  padding: 7px 20px;
+  border-radius: 3px;
+}
 
+.search__container {
+  background-color: rgba(255, 255, 255, .5);
+  width: 200px;
+  margin: 10px 0;
+}
 
 

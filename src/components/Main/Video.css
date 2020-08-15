@@ -1,8 +1,9 @@
 .video {
     display: flex;
     flex-direction: column;
+    justify-items: center;
     position: relative;
-    border: 1px solid white;
+    /* border: 1px solid white; */
     height: 33%;
     scroll-snap-align: start;
 
@@ -10,7 +11,7 @@
 
 .video__player {
     /* object-fit: none;
-    object-position: 50% 50%; */
+    object-position: 90% 50%; */
 
     object-fit: cover;
     height: 100%;
@@ -21,7 +22,10 @@
     position: fixed;
     top: 0;
     flex:1;
-    z-index: 2;
+    z-index: 4;
+    /* max-width: 100%; */
+    max-width: 720px;
+
     object-fit: cover;
 }
 
@@ -30,9 +34,9 @@
     width: 100%;
     /* top: 0px; */
     bottom: 0;
-    background-color: black;
-    opacity: .7;
-
+    /* background-color: black; */
+    /* opacity: .9; */
+    background: linear-gradient(to bottom, rgba(110,109,109,0.27) 0%, rgba(0,0,0,0.76) 50%, rgba(0,0,0,1) 75%);
 }
 
 @media only screen and (max-width: 600px) {}

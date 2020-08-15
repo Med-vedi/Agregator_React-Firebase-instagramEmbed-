@@ -9,6 +9,7 @@ import LoginMenu from "./LoginMenu";
 import PauseCircleOutlineIcon from "@material-ui/icons/PauseCircleOutline";
 
 import { auth } from "../../firebase";
+import Search from "./Search";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,12 +41,12 @@ const Header = ({ user, menuItemClicked }) => {
   return (
     <div className="header__container">
       <div className="header__menu">
-        <HeaderMenu menuItemClicked={menuItemClicked} />
+        <HeaderMenu menuItemClicked={menuItemClicked}>hey</HeaderMenu>
       </div>
       <div className="header__logo">
-        {user ? <h3>Hi, {user.displayName}</h3> : <h1>Guest</h1>}
+        {user ? <h5>Hi, {user.displayName}</h5> : <h5>Guest</h5>}
       </div>
-      <div className={classes.search}>
+      {/* <div className={classes.search}>
         <InputBase
           placeholder="Search…"
           classes={{
@@ -54,7 +55,8 @@ const Header = ({ user, menuItemClicked }) => {
           }}
           inputProps={{ "aria-label": "search" }}
         />
-      </div>
+      </div> */}
+      {/* <Search/> */}
       <div className="header__login">
         {user ? (
           <PauseCircleOutlineIcon

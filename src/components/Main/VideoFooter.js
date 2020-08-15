@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./VideoFooter.css";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
-import { db } from "../../../firebase";
+import { db } from "../../firebase";
 import firebase from "firebase";
 
 // to FIX posting likes in DB
