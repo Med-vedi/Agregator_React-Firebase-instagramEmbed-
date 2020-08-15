@@ -37,6 +37,7 @@ const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
         // loop
         onClick={onVideoPress}
         playsInline
+        style={{"visibility":"visible"}}
         ref={videoRef}
         src={videoUrl}
       ></video>

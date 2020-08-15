@@ -3,16 +3,12 @@
     flex-direction: column;
     justify-items: center;
     position: relative;
-    /* border: 1px solid white; */
     height: 33%;
     scroll-snap-align: start;
 
 }
 
 .video__player {
-    /* object-fit: none;
-    object-position: 90% 50%; */
-
     object-fit: cover;
     height: 100%;
     width: 100%;
@@ -32,10 +28,7 @@
 .video__footer {
     position: absolute;
     width: 100%;
-    /* top: 0px; */
     bottom: 0;
-    /* background-color: black; */
-    /* opacity: .9; */
     background: linear-gradient(to bottom, rgba(110,109,109,0.27) 0%, rgba(0,0,0,0.76) 50%, rgba(0,0,0,1) 75%);
 }
 
