@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-import { auth, db, dbRef } from "./firebase";
+import { auth, db } from "./firebase";
 
 import Header from "./components/Header/Header";
 import Video from "./components/Main/Video";
@@ -12,7 +12,7 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [videos, setVideos] = useState([]);
 
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("all");
 
   const menuItemToCategory = (data) => setCategory(data);
 
@@ -37,7 +37,7 @@ const App = () => {
 
   //menu activated
   useEffect(() => {
-    if (category !== "") {
+    if (category !== "all") {
       db.collection("videos")
         .where("category", "==", category ? category : null)
         .onSnapshot((snapshot) => {

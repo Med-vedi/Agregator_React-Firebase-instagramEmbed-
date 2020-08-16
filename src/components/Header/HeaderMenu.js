@@ -8,7 +8,7 @@ const HeaderMenu = (props) => {
 
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const [category, setCategory] = useState(""); //to arg for prop
+  const [category, setCategory] = useState("all"); //to arg for prop
 
   const handleMenuItem = (e) => {
     console.log(e.currentTarget.id);
@@ -44,6 +44,10 @@ const HeaderMenu = (props) => {
         <MenuItem onClick={handleMenuItem} id="other">
           Other
         </MenuItem>{" "}
+        <MenuItem onClick={handleMenuItem} id="all">
+          All
+        </MenuItem>
+
       </Menu>
     </div>
   );
