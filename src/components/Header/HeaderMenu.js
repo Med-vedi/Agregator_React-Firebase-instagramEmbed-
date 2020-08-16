@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
 import DehazeIcon from "@material-ui/icons/Dehaze";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -36,8 +35,8 @@ const HeaderMenu = (props) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleMenuItem} id="shoes">
-          Shoes
+        <MenuItem onClick={handleMenuItem} id="travel">
+          Travel
         </MenuItem>
         <MenuItem onClick={handleMenuItem} id="style">
           Style

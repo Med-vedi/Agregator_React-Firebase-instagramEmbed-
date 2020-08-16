@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-import { auth, db } from "./firebase";
+import { auth, db, dbRef } from "./firebase";
 
 import Header from "./components/Header/Header";
 import Video from "./components/Main/Video";
@@ -35,18 +35,49 @@ const App = () => {
     };
   }, [user]);
 
+  //menu activated
   useEffect(() => {
-    db.collection("videos").onSnapshot((snapshot) =>
-      setVideos(snapshot.docs.map((doc) => ({ id: doc.id, video: doc.data() })))
-    );
-  }, [videos]);
-
-  /////////////////////////////////
-  useEffect(() => {
-    // TO DO - rerender the page on category (menuItem) change
-    // console.log(category)
+    if (category !== "") {
+      db.collection("videos")
+        .where("category", "==", category ? category : null)
+        .onSnapshot((snapshot) => {
+          setVideos(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              video: doc.data(),
+            }))
+          );
+        });
+      console.log(category);
+    } else {
+      db.collection("videos").onSnapshot((snapshot) =>
+        setVideos(
+          snapshot.docs.map((doc) => ({ id: doc.id, video: doc.data() }))
+        )
+      );
+    }
   }, [category]);
-  /////////////////////////////////
+
+  // useEffect(() => {
+  //   db.collection("videos").onSnapshot((snapshot) =>
+  //     setVideos(snapshot.docs.map((doc) => ({ id: doc.id, video: doc.data() })))
+  //   );
+  // }, [videos]);
+
+  // useEffect(() => {
+  //   //rerender by category prop
+  //   db.collection("videos")
+  //     .where("category", "==", category ? category : null)
+  //     .onSnapshot((snapshot) => {
+  //       setVideos(
+  //         snapshot.docs.map((doc) => ({
+  //           id: doc.id,
+  //           video: doc.data(),
+  //         }))
+  //       );
+  //     });
+  //   console.log(category);
+  // }, [category]);
 
   return (
     <div className="app">
@@ -55,7 +86,7 @@ const App = () => {
       </div>
       <div className="app__main">
         <div className="app__main_video">
-          {videos.map(({ id, video, likes, category }) => (
+          {videos.map(({ id, video }) => (
             <Video
               key={id}
               videoId={id}
