@@ -107,6 +107,14 @@ const App = () => {
           <button onClick={Test}>Login to make your post</button>
         )}
       </div>
+      <div className="app__contacts">
+        <ul>
+          <li>Instagram</li>
+          <li>GitHub</li>
+          <li>Facebook</li>
+          <li>LinkedIn</li>
+        </ul>
+      </div>
     </div>
   );
 };

@@ -9,8 +9,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   fabButton: {
-    // zIndex: 3,
-    // bottom: '50px',
+    zIndex: 3,
+    bottom: '90px',
   },
 }));
 
