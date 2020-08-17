@@ -1,19 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DehazeIcon from "@material-ui/icons/Dehaze";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import "./Header.css";
 
-const HeaderMenu = (props) => {
-
+const HeaderMenu = ({ menuItemClicked }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const [category, setCategory] = useState("all"); //to arg for prop
+  useEffect(() => {
+    menuItemClicked(category);
+  }, [category]);
 
   const handleMenuItem = (e) => {
-    console.log(e.currentTarget.id);
     setCategory(e.currentTarget.id);
-    props.menuItemClicked(category);
+    // props.menuItemClicked(e.currentTarget.id);
   };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -26,7 +27,7 @@ const HeaderMenu = (props) => {
   return (
     <div className="simpleMenu">
       <div className="simpleMenu__menuBtn">
-        <DehazeIcon onClick={handleClick} fontSize="large"/>
+        <DehazeIcon onClick={handleClick} fontSize="large" />
       </div>
       <Menu
         id="simple-menu"
@@ -47,7 +48,6 @@ const HeaderMenu = (props) => {
         <MenuItem onClick={handleMenuItem} id="all">
           All
         </MenuItem>
-
       </Menu>
     </div>
   );

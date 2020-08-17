@@ -1,7 +1,7 @@
 .video {
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-items: center; */
     position: relative;
     height: 33%;
     scroll-snap-align: start;
@@ -29,7 +29,7 @@
     position: absolute;
     width: 100%;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(110,109,109,0.27) 0%, rgba(0,0,0,0.76) 50%, rgba(0,0,0,1) 75%);
+    /* background: linear-gradient(to bottom, rgba(110,109,109,0.27) 0%, rgba(0,0,0,0.76) 50%, rgba(0,0,0,1) 75%); */
 
 }
 

@@ -44,6 +44,7 @@ const HeaderMenu = () => {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      console.log(authUser);
       if (authUser) {
         //user has logged in
         setUser(authUser);
@@ -52,10 +53,8 @@ const HeaderMenu = () => {
         setUser(null);
       }
     });
-    return () => {
-      //perfom some cleanup action
+    return () =>
       unsubscribe();
-    };
   }, [user, username]);
 
   const signUp = (e) => {

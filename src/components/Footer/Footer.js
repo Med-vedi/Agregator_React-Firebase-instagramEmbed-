@@ -8,10 +8,10 @@ const useStyles = makeStyles((theme) => ({
   typography: {
     padding: theme.spacing(2),
   },
-  fabButton: {
-    zIndex: 3,
-    bottom: '90px',
-  },
+  // fabButton: {
+  //   zIndex: 3,
+  //   bottom: '90px',
+  // },
 }));
 
 export default function Footer(props) {
