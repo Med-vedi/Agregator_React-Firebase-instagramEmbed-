@@ -65,20 +65,18 @@ const App = () => {
         <Header user={user} menuItemClicked={handleMenuItemClick}></Header>
       </div>
       <div className="app__main">
-        {/* <div className="app__main_video"> */}
-          {videos.map(({ id, video }) => (
-            <Video
-              key={id}
-              videoId={id}
-              videoUrl={video.videoUrl}
-              description={video.description}
-              seller={video.seller}
-              likes={video.likes}
-              user={user}
-              menuItem={category}
-            />
-          ))}
-        {/* </div> */}
+        {videos.map(({ id, video }) => (
+          <Video
+            key={id}
+            videoId={id}
+            videoUrl={video.videoUrl}
+            description={video.description}
+            seller={video.seller}
+            likes={video.likes}
+            user={user}
+            menuItem={category}
+          />
+        ))}
       </div>
       <div className="app__footer">
         {user?.displayName ? (

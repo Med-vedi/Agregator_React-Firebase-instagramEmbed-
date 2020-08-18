@@ -33,12 +33,13 @@ const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
   return (
     <div className={cls(`video`, { video__open: isOpen })}>
       <div className={cls(`video__player`, { video__open: isOpen })}>
+        {/* <div className="video__player__text">Play</div> */}
         <video
           onClick={onVideoPlayerClick}
           playsInline
           ref={videoRef}
           src={videoUrl}
-        />
+        ></video>
         <div className="video__footer">
           <VideoFooter
             id={videoId}
