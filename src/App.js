@@ -65,7 +65,7 @@ const App = () => {
         <Header user={user} menuItemClicked={handleMenuItemClick}></Header>
       </div>
       <div className="app__main">
-        <div className="app__main_video">
+        {/* <div className="app__main_video"> */}
           {videos.map(({ id, video }) => (
             <Video
               key={id}
@@ -78,7 +78,7 @@ const App = () => {
               menuItem={category}
             />
           ))}
-        </div>
+        {/* </div> */}
       </div>
       <div className="app__footer">
         {user?.displayName ? (

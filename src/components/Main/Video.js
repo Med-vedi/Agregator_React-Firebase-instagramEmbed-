@@ -14,17 +14,17 @@ const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
   const [playing, setPlaying] = useState(false);
   const [isOpen, setOpen] = useState(false);
 
-  const handlePostClick = () => {
+  const handleVideoClick = () => {
     setOpen((s) => !s);
   };
 
-  const onVideoPress = () => {
+  const onVideoPlayerClick = () => {
     if (playing) {
-      handlePostClick();
+      handleVideoClick();
       videoRef.current.pause();
       setPlaying(false);
     } else {
-      handlePostClick();
+      handleVideoClick();
       videoRef.current.play();
       setPlaying(true);
     }
@@ -32,24 +32,22 @@ const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
 
   return (
     <div className={cls(`video`, { video__open: isOpen })}>
-      <video
-        className={cls(`video__player`, { video__open: isOpen })}
-        // loop
-        onClick={onVideoPress}
-        playsInline
-        // preload="metadata"
-        // style={{"visibility":"visible"}}
-        ref={videoRef}
-        src={videoUrl}
-      ></video>
-      <div className="video__footer">
-        <VideoFooter
-          id={videoId}
-          likes={likes}
-          seller={seller}
-          description={description}
-          user={user}
+      <div className={cls(`video__player`, { video__open: isOpen })}>
+        <video
+          onClick={onVideoPlayerClick}
+          playsInline
+          ref={videoRef}
+          src={videoUrl}
         />
+        <div className="video__footer">
+          <VideoFooter
+            id={videoId}
+            likes={likes}
+            seller={seller}
+            description={description}
+            user={user}
+          />
+        </div>
       </div>
     </div>
   );

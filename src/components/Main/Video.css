@@ -1,36 +1,38 @@
-.video {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-items: center; */
+/* .video video {
     position: relative;
-    height: 33%;
+    max-height: 300px;
     scroll-snap-align: start;
-    
-
-}
+    object-fit: cover;
+    width: 100%;
+} */
 
 .video__player {
-    object-fit: cover;
+    position: relative;
+    height: 30vh;
+    scroll-snap-align: start;
+}
+
+.video__player video {
     height: 100%;
     width: 100%;
+    object-fit: cover;
+
 }
 
 .video__open {
     position: fixed;
     top: 0;
-    flex:1;
+    height: 100vh;
     z-index: 4;
     max-width: 720px;
-
     object-fit: cover;
 }
 
 .video__footer {
     position: absolute;
     width: 100%;
+    z-index: 2;
     bottom: 0;
-    /* background: linear-gradient(to bottom, rgba(110,109,109,0.27) 0%, rgba(0,0,0,0.76) 50%, rgba(0,0,0,1) 75%); */
-
 }
 
 @media only screen and (max-width: 600px) {}
