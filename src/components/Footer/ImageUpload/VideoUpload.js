@@ -49,7 +49,7 @@ function VideoUpload({ username }) {
           .then((url) => {
             //post a video in  db
             db.collection("videos").add({
-              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               seller: username,
               description: caption,
               videoUrl: url,
@@ -76,7 +76,7 @@ function VideoUpload({ username }) {
         onChange={(e) => setCaption(e.target.value)}
         value={caption}
       />
-      <input type="file" onChange={handleChange} />
+      <input type='file' onChange={handleChange} />
       <Button className="videoupload__btn" onClick={handleUpload}>
         Upload
       </Button>

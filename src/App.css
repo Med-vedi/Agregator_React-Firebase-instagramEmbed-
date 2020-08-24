@@ -42,10 +42,7 @@ html {
   flex-direction: column;
   overflow: scroll;
   scroll-snap-type: y mandatory;
-
-
 }
-
 /* hide scrollbar from Chrome, Safari and Opera */
 .app__main::-webkit-scrollbar {
   display: hidden;

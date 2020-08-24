@@ -35,6 +35,7 @@ const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
       <div className={cls(`video__player`, { video__open: isOpen })}>
         {/* <div className="video__player__text">Play</div> */}
         <video
+          // style={{width: "640px"}}
           onClick={onVideoPlayerClick}
           playsInline
           ref={videoRef}
