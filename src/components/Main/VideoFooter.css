@@ -9,8 +9,14 @@
     flex: 1;
 }
 
-.videoFooter__Buttons {
+.videoFooter__Buttons__container {
+    display: flex;
     text-align: center;
     padding: 5px 30px;
+
+}
+
+.videoFooter__btn {
+    margin: 0 10px;
 
 }

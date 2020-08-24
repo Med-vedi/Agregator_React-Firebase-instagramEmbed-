@@ -5,24 +5,23 @@ import firebase from "firebase";
 
 import "./VideoUpload.css";
 
-function VideoUpload({ username }) {
+function VideoUpload({ username, handleCloseFooterModal }) {
   const [video, setVideo] = useState(null);
-  //   const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState("");
-
-  //to fix
-  // const [anchorEl, setAnchorEl] = React.useState(null);
-  // const open = Boolean(anchorEl);
-  // const id = open ? "simple-popover" : undefined;
+  const [uploadGreet, setUploadGreet] = useState('Share your video')
 
   const handleChange = (e) => {
+    uploadGreet?console.log(uploadGreet):console.log('ok');;
+
     if (e.target.files[0]) {
       setVideo(e.target.files[0]);
     }
   };
   //TO DO catch empty file
   const handleUpload = () => {
+    setUploadGreet('Share your video')
+
     let uploadTask = storage.ref(`videos/${video.name}`).put(video);
 
     console.log(uploadTask);
@@ -49,7 +48,7 @@ function VideoUpload({ username }) {
           .then((url) => {
             //post a video in  db
             db.collection("videos").add({
-              // timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               seller: username,
               description: caption,
               videoUrl: url,
@@ -59,6 +58,9 @@ function VideoUpload({ username }) {
             setProgress(0);
             setCaption("");
             setVideo(null);
+            setUploadGreet('Done')
+            handleCloseFooterModal()
+
             //to fix
             // setAnchorEl(null);
           });
@@ -68,7 +70,7 @@ function VideoUpload({ username }) {
 
   return (
     <div className="videoupload__container">
-      <h1>Share your Video</h1>
+      <h1>{uploadGreet}</h1>
       <progress className="videoupload__progress" value={progress} max="100" />
       <input
         type="text"

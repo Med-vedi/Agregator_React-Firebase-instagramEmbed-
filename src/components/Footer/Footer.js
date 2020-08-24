@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { makeStyles, Popover, Fab } from "@material-ui/core";
 
 import AddIcon from "@material-ui/icons/Add";
@@ -14,9 +14,9 @@ const useStyles = makeStyles((theme) => ({
   // },
 }));
 
-export default function Footer(props) {
+export default function Footer({username}) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -54,8 +54,8 @@ export default function Footer(props) {
           horizontal: "center",
         }}
       >
-        <VideoUpload username={props.username} />
-        {/* <ImageUpload username={props.username} /> */}
+        <VideoUpload username={username} handleCloseFooterModal={handleClose} />
+        {/* <ImageUpload username={username} /> */}
       </Popover>
     </div>
   );
