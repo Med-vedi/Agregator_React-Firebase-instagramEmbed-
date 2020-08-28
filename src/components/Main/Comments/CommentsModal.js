@@ -46,7 +46,7 @@ export default function CommentsModal({ videoId, user, seller }) {
     }
 
     return () => {
-      countComments();
+      // countComments();
       unsubscribe();
     };
   }, [videoId]);

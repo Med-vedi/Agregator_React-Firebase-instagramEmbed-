@@ -48,7 +48,6 @@ const VideoFooter = ({ id, description, seller, user, sellerLink }) => {
     <div className="videoFooter">
       <div className="videoFooter__text">
         <a href={sellerLink}>
-          {/* {" "} */}
           <h3>{seller}</h3>
           <p>{description}</p>
 
@@ -57,7 +56,7 @@ const VideoFooter = ({ id, description, seller, user, sellerLink }) => {
       </div>
       <div className="videoFooter__Buttons__container">
         <div className="videoFooter__btn">
-          <CommentsModal key={id} videoId={id} seller={seller} user={user} />
+          <CommentsModal videoId={id} seller={seller} user={user} />
         </div>
         <div className="videoFooter__btn">
           {liked ? (
