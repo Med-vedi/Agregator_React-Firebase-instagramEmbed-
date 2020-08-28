@@ -14,7 +14,6 @@ const HeaderMenu = ({ menuItemClicked }) => {
 
   const handleMenuItem = (e) => {
     setCategory(e.currentTarget.id);
-    // props.menuItemClicked(e.currentTarget.id);
   };
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);

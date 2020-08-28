@@ -4,18 +4,20 @@ import "./Video.css";
 import cls from "classnames";
 import { useState } from "react";
 import VideoFooter from "./VideoFooter";
-// import { db } from "../../../firebase";
-// import { useEffect } from "react";
+import Img from "../../img/123.png";
 
-const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
-  // console.log({videoUrl});
+const Video = ({ videoId, videoUrl, description, seller, user }) => {
+  // console.log({comments});
   const videoRef = useRef(null);
 
   const [playing, setPlaying] = useState(false);
   const [isOpen, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false)
+
 
   const handleVideoClick = () => {
     setOpen((s) => !s);
+    setHidden ((s)=> !s)
   };
 
   const onVideoPlayerClick = () => {
@@ -31,9 +33,10 @@ const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
   };
 
   return (
-    <div className={cls(`video`, { video__open: isOpen })}>
+    <div className={cls(`video`, { video__open: isOpen})}>
       <div className={cls(`video__player`, { video__open: isOpen })}>
         {/* <div className="video__player__text">Play</div> */}
+        <img src={Img} className={cls({video__poster: hidden })} alt="poster" onClick={onVideoPlayerClick} />
         <video
           onClick={onVideoPlayerClick}
           playsInline
@@ -43,7 +46,6 @@ const Video = ({ videoId, videoUrl, description, seller, likes, user }) => {
         <div className="video__footer">
           <VideoFooter
             id={videoId}
-            likes={likes}
             seller={seller}
             description={description}
             user={user}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./VideoFooter.css";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 // import InsertCommentIcon from "@material-ui/icons/InsertComment";
@@ -9,25 +9,49 @@ import CommentsModal from "./Comments/CommentsModal";
 
 // to FIX posting likes in DB
 
-const VideoFooter = ({ id, likes, description, seller, user }) => {
+const VideoFooter = ({ id, description, seller, user }) => {
   const [liked, setLiked] = useState(false);
+  const [likesCounter, setLikesCounter] = useState(0);
   // console.log({id});
+  useEffect(() => {
+    let likesCount;
+    likesCount = db
+      .collection("videos")
+      .doc(id)
+      .collection("likes")
+      .onSnapshot((snapshot) => {
+        // console.log(snapshot.length);
+        setLikesCounter(snapshot.size);
+      });
+    return () => {
+      likesCount();
+    };
+  }, [id]);
 
   const onLikeClick = () => {
-    console.log({ id });
-
+    console.log(likesCounter);
     setLiked(true);
     db.collection("videos")
       .doc(id)
       .collection("likes")
       .add({
-        likes: likes + 1,
+        likes: 1,
         username: user.displayName,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
 
-        //TO DO
       });
   };
+
+  const onUnLikeClick = () => {
+    console.log(likesCounter);
+    setLiked(false);
+    db.collection("videos")
+      .doc(id)
+      .collection("likes")
+      .doc(id)
+      .delete()
+  };
+
 
   return (
     <div className="videoFooter">
@@ -39,18 +63,20 @@ const VideoFooter = ({ id, likes, description, seller, user }) => {
         <div className="videoFooter__btn">
           {/* <InsertCommentIcon fontSize="large" />
           <p>0</p> */}
-          <CommentsModal id={id}
-            likes={likes}
+          <CommentsModal
+            key={id}
+            videoId={id}
             seller={seller}
-            user={user}/>
+            user={user}
+          />
         </div>
         <div className="videoFooter__btn">
           {liked ? (
-            <FavoriteIcon fontSize="large" onClick={(e) => setLiked(false)} />
+            <FavoriteIcon fontSize="large" onClick={onUnLikeClick} />
           ) : (
             <FavoriteBorderIcon fontSize="large" onClick={onLikeClick} />
           )}
-          <p>{liked ? likes + 1 : likes}</p>
+          <p>{likesCounter}</p>
         </div>
       </div>
     </div>

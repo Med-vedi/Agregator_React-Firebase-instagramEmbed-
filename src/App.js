@@ -6,6 +6,7 @@ import { auth, db } from "./firebase";
 import Header from "./components/Header/Header";
 import Video from "./components/Main/Video";
 import Footer from "./components/Footer/Footer";
+import LoginMenu from "./components/Header/LoginMenu";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -72,7 +73,8 @@ const App = () => {
             videoUrl={video.videoUrl}
             description={video.description}
             seller={video.seller}
-            likes={video.likes}
+            // likes={video.likes}
+            // comments={comments}
             user={user}
             menuItem={category}
           />
@@ -82,7 +84,10 @@ const App = () => {
         {user?.displayName ? (
           <Footer username={user.displayName} />
         ) : (
-          <button onClick={Test}>Login to make your post</button>
+          <div>
+            Login
+            <LoginMenu />
+          </div>
         )}
       </div>
       <div className="app__contacts">

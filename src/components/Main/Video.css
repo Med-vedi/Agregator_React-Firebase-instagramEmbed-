@@ -41,6 +41,9 @@
     width: 100%;
     object-fit: cover;
 }
+.video__poster{
+    display: none;
+}
 
 .video__footer {
     position: absolute;
