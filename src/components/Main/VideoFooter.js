@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Link } from "react";
 import "./VideoFooter.css";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 // import InsertCommentIcon from "@material-ui/icons/InsertComment";
@@ -9,7 +9,7 @@ import CommentsModal from "./Comments/CommentsModal";
 
 // to FIX posting likes in DB
 
-const VideoFooter = ({ id, description, seller, user }) => {
+const VideoFooter = ({ id, description, seller, user, sellerLink }) => {
   const [liked, setLiked] = useState(false);
   const [likesCounter, setLikesCounter] = useState(0);
   // console.log({id});
@@ -31,44 +31,33 @@ const VideoFooter = ({ id, description, seller, user }) => {
   const onLikeClick = () => {
     console.log(likesCounter);
     setLiked(true);
-    db.collection("videos")
-      .doc(id)
-      .collection("likes")
-      .add({
-        likes: 1,
-        username: user.displayName,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-
-      });
+    db.collection("videos").doc(id).collection("likes").add({
+      likes: 1,
+      username: user.displayName,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+    });
   };
 
   const onUnLikeClick = () => {
     console.log(likesCounter);
     setLiked(false);
-    db.collection("videos")
-      .doc(id)
-      .collection("likes")
-      .doc(id)
-      .delete()
+    db.collection("videos").doc(id).collection("likes").doc(id).delete();
   };
-
 
   return (
     <div className="videoFooter">
       <div className="videoFooter__text">
-        <h3>{seller}</h3>
-        <p>{description}</p>
+        <a href={sellerLink}>
+          {/* {" "} */}
+          <h3>{seller}</h3>
+          <p>{description}</p>
+
+        </a>
+
       </div>
       <div className="videoFooter__Buttons__container">
         <div className="videoFooter__btn">
-          {/* <InsertCommentIcon fontSize="large" />
-          <p>0</p> */}
-          <CommentsModal
-            key={id}
-            videoId={id}
-            seller={seller}
-            user={user}
-          />
+          <CommentsModal key={id} videoId={id} seller={seller} user={user} />
         </div>
         <div className="videoFooter__btn">
           {liked ? (

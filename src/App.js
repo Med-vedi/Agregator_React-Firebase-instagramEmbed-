@@ -75,6 +75,7 @@ const App = () => {
             seller={video.seller}
             // likes={video.likes}
             // comments={comments}
+            sellerLink={video.insta}
             user={user}
             menuItem={category}
           />
