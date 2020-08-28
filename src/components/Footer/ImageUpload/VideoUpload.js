@@ -9,10 +9,12 @@ function VideoUpload({ username, handleCloseFooterModal }) {
   const [video, setVideo] = useState(null);
   const [progress, setProgress] = useState(0);
   const [caption, setCaption] = useState("");
-  const [uploadGreet, setUploadGreet] = useState('Share your video')
+  const [insta, setInsta] = useState("");
+
+  const [uploadGreet, setUploadGreet] = useState("Share your video");
 
   const handleChange = (e) => {
-    uploadGreet?console.log(uploadGreet):console.log('ok');;
+    uploadGreet ? console.log(uploadGreet) : console.log("ok");
 
     if (e.target.files[0]) {
       setVideo(e.target.files[0]);
@@ -20,7 +22,7 @@ function VideoUpload({ username, handleCloseFooterModal }) {
   };
   //TO DO catch empty file
   const handleUpload = () => {
-    setUploadGreet('Share your video')
+    setUploadGreet("Share your video");
 
     let uploadTask = storage.ref(`videos/${video.name}`).put(video);
 
@@ -51,15 +53,17 @@ function VideoUpload({ username, handleCloseFooterModal }) {
               timestamp: firebase.firestore.FieldValue.serverTimestamp(),
               seller: username,
               description: caption,
+              insta: `https://www.instagram.com/${insta}/`,
               videoUrl: url,
               likes: 0,
               username: username,
             });
             setProgress(0);
             setCaption("");
+            setInsta("");
             setVideo(null);
-            setUploadGreet('Done')
-            handleCloseFooterModal()
+            setUploadGreet("Done");
+            handleCloseFooterModal();
 
             //to fix
             // setAnchorEl(null);
@@ -78,7 +82,13 @@ function VideoUpload({ username, handleCloseFooterModal }) {
         onChange={(e) => setCaption(e.target.value)}
         value={caption}
       />
-      <input type='file' onChange={handleChange} />
+      <input
+        type="text"
+        placeholder="Your instagram account"
+        onChange={(e) => setInsta(e.target.value)}
+        value={insta}
+      />
+      <input type="file" onChange={handleChange} />
       <Button className="videoupload__btn" onClick={handleUpload}>
         Upload
       </Button>
