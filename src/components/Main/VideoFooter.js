@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Link } from "react";
+import React, { useState, useEffect } from "react";
 import "./VideoFooter.css";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 // import InsertCommentIcon from "@material-ui/icons/InsertComment";
@@ -14,6 +14,7 @@ const VideoFooter = ({ id, description, seller, user, sellerLink }) => {
   const [likesCounter, setLikesCounter] = useState(0);
   // console.log({id});
   useEffect(() => {
+    // console.log(user.uid);
     let likesCount;
     likesCount = db
       .collection("videos")
@@ -29,19 +30,16 @@ const VideoFooter = ({ id, description, seller, user, sellerLink }) => {
   }, [id]);
 
   const onLikeClick = () => {
-    console.log(likesCounter);
     setLiked(true);
-    db.collection("videos").doc(id).collection("likes").add({
+    db.collection("videos").doc(id).collection("likes").doc(user.uid).set({
       likes: 1,
       username: user.displayName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
   };
-
   const onUnLikeClick = () => {
-    console.log(likesCounter);
     setLiked(false);
-    db.collection("videos").doc(id).collection("likes").doc(id).delete();
+    db.collection("videos").doc(id).collection("likes").doc(user.uid).delete();
   };
 
   return (
@@ -50,9 +48,7 @@ const VideoFooter = ({ id, description, seller, user, sellerLink }) => {
         <a href={sellerLink}>
           <h3>{seller}</h3>
           <p>{description}</p>
-
         </a>
-
       </div>
       <div className="videoFooter__Buttons__container">
         <div className="videoFooter__btn">
