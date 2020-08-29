@@ -6,7 +6,6 @@ import { auth, db } from "./firebase";
 import Header from "./components/Header/Header";
 import Video from "./components/Main/Video";
 import Footer from "./components/Footer/Footer";
-import LoginMenu from "./components/Header/LoginMenu";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -18,9 +17,6 @@ const App = () => {
     setCategory(data);
   };
 
-  const Test = (e) => {
-    e.currentTarget.innerHTML = "Check out the icon in the corner";
-  };
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       if (authUser) {
@@ -73,8 +69,6 @@ const App = () => {
             videoUrl={video.videoUrl}
             description={video.description}
             seller={video.seller}
-            // likes={video.likes}
-            // comments={comments}
             sellerLink={video.insta}
             user={user}
             menuItem={category}
@@ -86,8 +80,7 @@ const App = () => {
           <Footer username={user.displayName} />
         ) : (
           <div>
-            Login
-            <LoginMenu />
+            <Footer username={null} />
           </div>
         )}
       </div>

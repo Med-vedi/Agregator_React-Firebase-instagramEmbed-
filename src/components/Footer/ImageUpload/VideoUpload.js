@@ -64,9 +64,6 @@ function VideoUpload({ username, handleCloseFooterModal }) {
             setVideo(null);
             setUploadGreet("Done");
             handleCloseFooterModal();
-
-            //to fix
-            // setAnchorEl(null);
           });
       }
     );

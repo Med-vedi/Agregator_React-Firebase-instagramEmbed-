@@ -5,13 +5,12 @@ import AddIcon from "@material-ui/icons/Add";
 import VideoUpload from "./ImageUpload/VideoUpload";
 
 const useStyles = makeStyles((theme) => ({
-  typography: {
-    padding: theme.spacing(2),
+
+  loginPop: {
+    backgroundColor: 'rgb(245,0,87)',
+    color: 'white',
+    padding: '10px'
   },
-  // fabButton: {
-  //   zIndex: 3,
-  //   bottom: '90px',
-  // },
 }));
 
 export default function Footer({username}) {
@@ -20,7 +19,6 @@ export default function Footer({username}) {
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    console.log(event);
   };
 
   const handleClose = () => {
@@ -54,8 +52,9 @@ export default function Footer({username}) {
           horizontal: "center",
         }}
       >
-        <VideoUpload username={username} handleCloseFooterModal={handleClose} />
-        {/* <ImageUpload username={username} /> */}
+        {username?
+        <VideoUpload username={username} handleCloseFooterModal={handleClose} />:
+        <h1 className={classes.loginPop} >Login to share a file</h1>}
       </Popover>
     </div>
   );

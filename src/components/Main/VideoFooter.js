@@ -6,19 +6,20 @@ import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { db } from "../../firebase";
 import firebase from "firebase";
 import CommentsModal from "./Comments/CommentsModal";
+import LoginPopover from './popOverLogin'
 
 // to FIX posting likes in DB
 
 const VideoFooter = ({ id, description, seller, user, sellerLink }) => {
   const [liked, setLiked] = useState(false);
   const [likesCounter, setLikesCounter] = useState(0);
-  let userLiked = db
-    .collection("videos")
-    .doc(id)
-    .collection("likes")
-    .doc(user.uid);
+  // let userLiked = db
+  //   .collection("videos")
+  //   .doc(id)
+  //   .collection("likes")
+  //   .doc(user.uid);
 
-    useEffect(() => {
+  useEffect(() => {
     let likesCount;
     likesCount = db
       .collection("videos")
@@ -32,22 +33,34 @@ const VideoFooter = ({ id, description, seller, user, sellerLink }) => {
       likesCount();
     };
   }, [id]);
-
+///TO FIX : a modal popUp for the case user === null
   const onLikeClick = () => {
-    setLiked(true);
-    db.collection("videos").doc(id).collection("likes").doc(user.uid).set({
-      likes: 1,
-      username: user.displayName,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
-    userLiked? console.log('ok'):console.log('Nope');
+    if (user !== null) {
+      setLiked(true);
+      db.collection("videos").doc(id).collection("likes").doc(user.uid).set({
+        likes: 1,
+        username: user.displayName,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+    } else {
+      console.log("login");
+    }
 
+    // userLiked? console.log('ok'):console.log('Nope');
   };
   const onUnLikeClick = () => {
-    setLiked(false);
-    db.collection("videos").doc(id).collection("likes").doc(user.uid).delete();
-    userLiked? console.log('ok'):console.log('Nope');
+    if (user !== null) {
+      setLiked(false);
+      db.collection("videos")
+        .doc(id)
+        .collection("likes")
+        .doc(user.uid)
+        .delete();
+    } else if (user == null) {
+      console.log("login");
 
+    }
+    // userLiked? console.log('ok'):console.log('Nope');
   };
 
   return (
