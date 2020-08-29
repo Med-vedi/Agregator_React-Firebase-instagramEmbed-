@@ -12,9 +12,13 @@ import CommentsModal from "./Comments/CommentsModal";
 const VideoFooter = ({ id, description, seller, user, sellerLink }) => {
   const [liked, setLiked] = useState(false);
   const [likesCounter, setLikesCounter] = useState(0);
-  // console.log({id});
-  useEffect(() => {
-    // console.log(user.uid);
+  let userLiked = db
+    .collection("videos")
+    .doc(id)
+    .collection("likes")
+    .doc(user.uid);
+
+    useEffect(() => {
     let likesCount;
     likesCount = db
       .collection("videos")
@@ -36,10 +40,14 @@ const VideoFooter = ({ id, description, seller, user, sellerLink }) => {
       username: user.displayName,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
     });
+    userLiked? console.log('ok'):console.log('Nope');
+
   };
   const onUnLikeClick = () => {
     setLiked(false);
     db.collection("videos").doc(id).collection("likes").doc(user.uid).delete();
+    userLiked? console.log('ok'):console.log('Nope');
+
   };
 
   return (

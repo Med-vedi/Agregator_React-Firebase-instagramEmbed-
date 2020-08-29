@@ -49,7 +49,7 @@ export default function CommentsModal({ videoId, user, seller }) {
       // countComments();
       unsubscribe();
     };
-  }, [videoId]);
+  }, [videoId, comment]);
 
   const postComment = (e) => {
     e.preventDefault();
