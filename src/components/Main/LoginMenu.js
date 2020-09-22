@@ -53,8 +53,7 @@ const HeaderMenu = () => {
         setUser(null);
       }
     });
-    return () =>
-      unsubscribe();
+    return () => unsubscribe();
   }, [user, username]);
 
   const signUp = (e) => {

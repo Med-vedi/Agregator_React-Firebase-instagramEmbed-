@@ -50,6 +50,7 @@ html {
 
 /* hide scrollbar from IE, EDGE and Firefox */
 .app__main {
+  /* margin-top: 100px; */
   -ms-overflow-style: none;
   /*IE EDGE */
   scrollbar-width: none;
