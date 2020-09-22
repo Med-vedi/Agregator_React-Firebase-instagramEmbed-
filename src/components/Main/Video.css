@@ -1,0 +1,55 @@
+.video{
+    max-width: 640px;
+
+}
+.video__player {
+    position: relative;
+    margin: 0 auto;
+    height: 30vh;
+    width: 100%;
+    max-width: 960px;
+    scroll-snap-align: start;
+
+}
+
+.video__player__text {
+    color: black;
+    background-color: rgba(255, 255, 255, .7);
+    /* border-radius: 50%; */
+    padding: 10px;
+    position: absolute;
+    left: 45%;
+    bottom: 120px;
+    z-index: 0;
+}
+
+.video__player video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-image: url(https://scontent-mxp1-1.cdninstagram.com/v/t51.2885-15/e35/117580059_2826200757653916_2398399955946288925_n.jpg?_nc_ht=scontent-mxp1-1.cdninstagram.com&_nc_cat=100&_nc_ohc=PnQ_6pQSmyoAX9Ec3F_&oh=5758f65982648870eac6e8b4f014aa9b&oe=5F3E2B52../../img//123.png);
+
+
+
+}
+
+.video__open {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    z-index: 4;
+    width: 100%;
+    object-fit: cover;
+}
+.video__poster{
+    display: none;
+}
+
+.video__footer {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    bottom: 0;
+}
+
+@media only screen and (max-width: 600px) {}

@@ -1,33 +1,54 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import DehazeIcon from "@material-ui/icons/Dehaze";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
-import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
-import DehazeIcon from '@material-ui/icons/Dehaze';
+import "./Header.css";
 
-const HeaderMenu = () => {
+const HeaderMenu = ({ menuItemClicked }) => {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const [category, setCategory] = useState("all"); //to arg for prop
+  useEffect(() => {
+    menuItemClicked(category);
+  }, [category]);
+
+  const handleMenuItem = (e) => {
+    setCategory(e.currentTarget.id);
+  };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <div>
-      <PopupState variant="popover" popupId="demo-popup-menu">
-        {(popupState) => (
-          <React.Fragment>
-            <DehazeIcon
-              variant="contained"
-              color="primary"
-              {...bindTrigger(popupState)}
-            >
-              Menu
-            </DehazeIcon>
-            <Menu {...bindMenu(popupState)}>
-              <MenuItem onClick={popupState.close}>Item One</MenuItem>
-              <MenuItem onClick={popupState.close}>Item Two</MenuItem>
-              <MenuItem onClick={popupState.close}>Item Three</MenuItem>
-
-            </Menu>
-          </React.Fragment>
-        )}
-      </PopupState>
+    <div className="simpleMenu">
+      <div className="simpleMenu__menuBtn">
+        <DehazeIcon onClick={handleClick} fontSize="large" />
+      </div>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+      >
+        <MenuItem onClick={handleMenuItem} id="travel">
+          Travel
+        </MenuItem>
+        <MenuItem onClick={handleMenuItem} id="style">
+          Style
+        </MenuItem>
+        <MenuItem onClick={handleMenuItem} id="other">
+          Other
+        </MenuItem>{" "}
+        <MenuItem onClick={handleMenuItem} id="all">
+          All
+        </MenuItem>
+      </Menu>
     </div>
   );
 };
-
 export default HeaderMenu;

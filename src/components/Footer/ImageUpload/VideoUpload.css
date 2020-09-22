@@ -1,0 +1,18 @@
+.videoupload__container {
+    text-align: center;
+    padding: 10px;
+
+}
+
+.videoupload__container input {
+    display: block;
+    margin: 10px auto;
+}
+
+.videoupload__btn {
+    width: 100%;
+}
+
+.videoupload__btn:hover {
+    color: red;
+}

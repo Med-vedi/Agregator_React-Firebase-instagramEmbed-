@@ -5,11 +5,13 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
     "classnames": "^2.2.6",
+    "cross-fetch": "^3.0.5",
     "firebase": "^7.16.0",
     "material-ui-popup-state": "^1.6.1",
     "node-sass": "^4.14.1",

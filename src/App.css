@@ -1,37 +1,33 @@
 * {
-  margin: 0;
+  margin: 0 auto;
   font-family: sans-serif;
 }
 
 html {
-  height: 100%;
   overflow: hidden;
-}
+  scroll-snap-type: y mandatory;
+  max-width: 960px;
 
-body {
-  color: #000;
-  margin: 0;
-  padding: 0;
-  perspective: 1px;
-  transform-style: preserve-3d;
-  height: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  background: #fff;
-  text-align: center;
 }
 
 .app {
-  margin: 0 auto;
-  max-width: 960px;
-  /* background-color: #fafafa; */
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(63, 62, 62);
+
 }
 
 .app__header {
+
+  /* background-color: rgba(255, 255, 255, .2); */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 250, 255, 0) 100%);
+  position: fixed;
+  z-index: 1;
+  top: 0;
   color: #000;
-  position: sticky;
-  z-index: 3;
-  top: 0
+  width: 100%;
+  max-width: 960px;
 }
 
 .app__signup {
@@ -39,114 +35,54 @@ body {
   flex-direction: column;
 }
 
-
-
-.app__intro {
-  color:#fff;
-  background-color: rgba(0,0,0,.2);
-
-  box-sizing: border-box;
-  min-height: 50vh;
-  padding: 30vw 0 5vw;
-  position: relative;
-  transform-style: inherit;
-  width: 100%;
-}
-
-.app__intro,
-.app__intro:before {
-  background: 50% 50% / cover;
-}
-
-.app__intro::before {
-  color:#000;
-  position: absolute;
-  bottom: 0;
-  content: "Try It";
-  left: 0;
-  right: 0;
-  top: 0;
-  display: block;
-  background-image: url('./img/874.jpg');
-  background-size: cover;
-  transform-origin: center center 0;
-  transform: translateZ(-1px) scale(2);
-  z-index: -1;
-  height: 70vh
-}
-/* 
-.app__intro * {
-  font-weight: normal;
-  letter-spacing: 0.2em;
-  text-align: center;
-  margin: 0;
-  padding: 1em 0;
-} */
-
-.app__intro p {
-  background-color: rgba(0,0,0,.2)
-}
-
 .app__main {
-  margin: 200px auto;
   width: 100%;
-  position: relative;
-  z-index: 1;
-  background: #fff;
-  padding: 100px 0
-}
-
-
-
-.app__postcard__container {
+  height: 95vh;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+}
+/* hide scrollbar from Chrome, Safari and Opera */
+.app__main::-webkit-scrollbar {
+  display: hidden;
 }
 
-
-.tabs__container {
-  max-width: 960px;
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* background-color: black; */
-  /* color: white; */
+/* hide scrollbar from IE, EDGE and Firefox */
+.app__main {
+  /* margin-top: 100px; */
+  -ms-overflow-style: none;
+  /*IE EDGE */
+  scrollbar-width: none;
+  /*Firefox */
 }
 
-.tabs__posts_container {
+.app__footer {
+  position: sticky;
+  bottom: 100px;
+  z-index: 3;
+
+}
+
+.app__contacts{
+  bottom: 20px;
+
+}
+.app__contacts ul{
+  padding: 0;
+  /* bottom: 44px; */
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
+  color: red;
+  display: flex;
+  list-style: none;
 }
-
-.tabs__post__instagram_embded {
-  max-width: 340px;
-  margin-left: 10px;
-
+.app__contacts li{
+  margin: 0 10px;
 }
 
 
-.tabs__tab__text {
-  color: white;
-  display: none;
-}
-
-/* /TO DO:
-style instaCards */
-
-/* .tabs__instaEmbed{
-  max-height: 100px;
-} */
 
 @media only screen and (max-width: 600px) {
-  .app__intro {
-    padding: 50%;
 
-    min-height: 10vh;
-  
-  }
-  
+
 }

@@ -1,28 +1,21 @@
-import React from "react";
+import React,{useState} from "react";
 import { makeStyles, Popover, Fab } from "@material-ui/core";
 
-// import VideoUpload from "./Upload/VideoUpload";
 import AddIcon from "@material-ui/icons/Add";
-import ImageUpload from "./ImageUpload/ImageUpload";
+import VideoUpload from "./ImageUpload/VideoUpload";
 
 const useStyles = makeStyles((theme) => ({
-  typography: {
-    padding: theme.spacing(2),
-  },
-  fabButton: {
-    position: "fixed",
-    zIndex: 1,
-    // top: -30,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    margin: "0 auto",
+
+  loginPop: {
+    backgroundColor: 'rgb(245,0,87)',
+    color: 'white',
+    padding: '10px'
   },
 }));
 
-export default function Footer(props) {
+export default function Footer({username}) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -51,16 +44,17 @@ export default function Footer(props) {
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
           vertical: "top",
           horizontal: "center",
         }}
+        transformOrigin={{
+          vertical: "bottom",
+          horizontal: "center",
+        }}
       >
-        {/* <VideoUpload username={props.username} /> */}
-        <ImageUpload username={props.username}/>
+        {username?
+        <VideoUpload username={username} handleCloseFooterModal={handleClose} />:
+        <h1 className={classes.loginPop} >Login to share a file</h1>}
       </Popover>
     </div>
   );

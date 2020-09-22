@@ -1,18 +1,30 @@
-.header__container{
-    display: flex;
-    align-items: center;
-    background-color: white;
-    padding: 20px;
-    border-bottom: 1px solid lightgray;
-    opacity: .8;
-    object-fit: contain;
-
-  }
-
-
-  
-.header__logo{
-    margin: 0 auto;
-
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border-bottom: 1px solid lightgray; */
 }
+
+
+
+.header__logo {
+  text-align: center;
+  flex: 1;
+}
+
+.header__login {
+  margin: 0 20px;
+}
+
+.simpleMenu__menuBtn {
+  padding: 7px 20px;
+  border-radius: 3px;
+}
+
+.search__container {
+  background-color: rgba(255, 255, 255, .5);
+  width: 200px;
+  margin: 10px 0;
+}
+
 
